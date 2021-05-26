@@ -19,6 +19,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <link rel="stylesheet" href="{{ asset('admin-lte/dist/css/adminlte.css') }}">
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Reem+Kufi&display=swap" rel="stylesheet">
   <style>
     .header-primary{
       background-color: blue;
@@ -34,9 +36,16 @@ scratch. This page gets rid of all links and provides the needed markup only.
     a:-webkit-any-link {
         text-decoration: none;
     }
-    .DivIdToPrint {
+    /* .DivIdToPrint {
         display: none;
         visibility: hidden;
+    } */
+    .col-value{    
+      /* padding-left: 50px !important;
+      padding-right: 50px !important; */
+    }
+    .table-rumus tr *{
+      vertical-align: middle; 
     }
     @media print {
         @page { margin-top: 0mm; margin-bottom: 0mm; }
@@ -53,6 +62,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
             left: 0;
             top: 0;
         }
+        .table th, .table td {
+          padding: 0.25rem;
+        }
+        .table-rumus th, .table-rumus td{
+          padding-left: 0.75rem;
+          padding-right: 0.75rem;
+        }
         .DivIdToPrint, .pagebreak * { 
             /* visibility: visible; */
              page-break-after:always; 
@@ -65,6 +81,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   @yield('style')
 </head>
 <body class="hold-transition sidebar-mini" onload="window.print()" onafterprint="window.close()">
+{{-- <body class="hold-transition sidebar-mini" > --}}
 <div class="wrapper">
 
   <!-- Navbar -->
