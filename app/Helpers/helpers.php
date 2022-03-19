@@ -433,7 +433,7 @@ if (!function_exists('ijtima')) {
 
     function ijtima($tahun, $bulan, $jenis, $TZ, $rounded = 15)
     {   
-        $HY = $tahun + ($bulan * 29.53) / 354.3671;
+        $HY = $tahun + (($bulan * 29.53) / 354.3671);
         $K = round(($HY - 1410) * 12) - $jenis;
         $T = $K / 1200;
         $JD = 2447740.652 + 29.53058868 * $K + 0.0001178 * pow($T, 2);
@@ -480,10 +480,10 @@ if (!function_exists('ijtima')) {
 
         $TGL = (int)($B - $D - (int)(30.6001 * $E));
         $WD > 24 ? $TGL += 1 : $TGL = $TGL;
-        $E < 13.5 ? $BLN = $E -1 : $BLN = $E;
+        $BLN = ($E < 13.5) ? ($E -1) : $E;
 
         // Harus di uji
-        $BLN < 2.5 ? $THN = $C - 4715 : $THN = $C - 4716;
+        $THN = $BLN < 2.5 ? ($C - 4715 ): ($C - 4716);
 
         $PA = (int)($Z) + 2;
 

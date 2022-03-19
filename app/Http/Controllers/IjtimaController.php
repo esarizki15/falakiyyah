@@ -27,8 +27,9 @@ class IjtimaController extends Controller
     {
         $data=null;
         if(!empty($request->tahun_hijriah) && !empty($request->bulan_hijriah)){
-            $data = ijtima($request->tahun_hijriah,$request->bulan_hijriah,0,7);
-            $data['bulan_hijriah'] = Bulan::find($request->bulan_hijriah);
+            $bulan = Bulan::find($request->bulan_hijriah);
+            $data = ijtima($request->tahun_hijriah,$bulan->nomor,0,7);
+            $data['bulan_hijriah'] = $bulan;
             $data['tahun_hijriah'] = $request->tahun_hijriah;
             $data = collect($data);
         }

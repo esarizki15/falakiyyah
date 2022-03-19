@@ -20,7 +20,7 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="tahun_hijriah">tahun_hijriah</label>
+                                <label for="tahun_hijriah">Tahun Hijriah</label>
                                 <input type="number" required min="0" value="{{ request()->tahun_hijriah ?? old('tahun_hijriah') }}" class="form-control" id="tahun_hijriah" name="tahun_hijriah">
                             </div>
                         </div>
