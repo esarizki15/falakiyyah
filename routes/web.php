@@ -21,8 +21,9 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/jadwal-sholat', 'JadwalSholatController@index')->name('jadwal-sholat');
-Route::get('/ijtima', 'JadwalSholatController@ijtima')->name('ijtima');
+// Route::get('/ijtima', 'JadwalSholatController@ijtima')->name('ijtima');
 Route::get('/hilal', 'JadwalSholatController@hilal')->name('hilal');
+Route::resource('ijtima', 'IjtimaController')->middleware('auth');
 Route::resource('profile', 'ProfileController')->middleware('auth');
 Route::resource('user', 'UserController')->middleware('auth');
 Route::resource('role', 'RoleController')->middleware('auth');

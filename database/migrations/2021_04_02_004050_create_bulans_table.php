@@ -18,7 +18,7 @@ class CreateBulansTable extends Migration
             $table->string('nama', 20);
             $table->tinyInteger('nilai');
             $table->tinyInteger('nomor');
-            $table->tinyInteger('jenis_tahun')->default(0);
+            $table->tinyInteger('jenis_tahun')->default(0)->comment('0=>basithoh, 1=>kabisat');
             $table->string('jenis_bulan', 1)->default('M');
             $table->smallInteger('jumlah');
             $table->timestamps();
