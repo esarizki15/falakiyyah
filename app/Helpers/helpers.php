@@ -1,7 +1,7 @@
 <?php
 use App\Hari;
 use App\Bulan;
-
+use \Carbon\Carbon;
 if (!function_exists('sinDegree')) {
 
     function sinDegree($variable)
@@ -524,6 +524,7 @@ if (!function_exists('ijtima')) {
             'BLN' => $BLN,
             'PA' => $PA,
             'THN' => $THN,
+            'DATE_CARBON' => Carbon::create($THN . '-' . $BLN . '-' . $TGL),
             'Hari' => cariHari(\Carbon\Carbon::create($date))['Hari'],
             'Pasaran' => cariHari(\Carbon\Carbon::create($date))['Pasaran'],
         ];

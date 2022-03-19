@@ -53,6 +53,14 @@
             </li>
             @if (Auth::user()->role->id == 1)
               <li class="nav-item">
+                <a href="{{ route('ijtima.index') }}" class="nav-link {{ (request()->is('user*')) ? 'active' : '' }}">
+                  <i class="nav-icon fas fa-calendar"></i>
+                  <p>
+                    Ijtima'
+                  </p>
+                </a>
+              </li>
+              <li class="nav-item">
                 <a href="{{ route('user.index') }}" class="nav-link {{ (request()->is('user*')) ? 'active' : '' }}">
                   <i class="nav-icon fas fa-user"></i>
                   <p>

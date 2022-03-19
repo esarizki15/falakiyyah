@@ -15,7 +15,15 @@ class IjtimaController extends Controller
     public function index(Request $request)
     {
         $bulan = Bulan::where('jenis_bulan', 'H')->where('jenis_tahun', 0)->get();
-        return view('ijtima.index', compact('bulan'));
+        $data=null;
+        if(!empty($request->tahun_hijriah) && !empty($request->bulan_hijriah)){
+            $selectedBulan = Bulan::find($request->bulan_hijriah);
+            $data = ijtima($request->tahun_hijriah,$selectedBulan->nomor,0,7);
+            $data['bulan_hijriah'] = $selectedBulan;
+            $data['tahun_hijriah'] = $request->tahun_hijriah;
+            $data = collect($data);
+        }
+        return view('ijtima.index', compact('bulan', 'data'));
     }
     
     /**
@@ -32,8 +40,24 @@ class IjtimaController extends Controller
             $data['bulan_hijriah'] = $bulan;
             $data['tahun_hijriah'] = $request->tahun_hijriah;
             $data = collect($data);
+
+            if(!empty($request->lintang) && !empty($request->bujur) && !empty($request->tinggi_tempat) && !empty($request->zona_waktu) && !empty($request->ihtiyath) && !empty($request->tanggal)){
+                $astronomical = collect([
+                    'lintang' => $request->lintang,
+                    'bujur' => $request->bujur,
+                    'tinggi_tempat' => $request->tinggi_tempat,
+                    'zona_waktu' => $request->zona_waktu,
+                    'ihtiyath' => $request->ihtiyath,
+                    'tanggal' => Carbon::create($request->tanggal)
+                ]);
+                $hilal = hilal($astronomical['bujur'], $astronomical['lintang'],null,null,$astronomical['tanggal'], 7,$astronomical['tinggi_tempat']);
+                return view('print.hilal', compact('data', 'astronomical', 'hilal'));
+            }
+            // Kalau hanya ijtima' return ini
+            return view('ijtima.print', compact('data'));
         }
-        return view('ijtima.print', compact('data'));
+        
+        return redirect()->back();
     }
 
     /**
