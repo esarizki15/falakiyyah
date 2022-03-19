@@ -16,7 +16,7 @@
                 <tr>
                     <th>F</th>
                     <td>Frac((093.27283 + 483202.01873 * T) / 360) * 360</td>
-                    <td class="col-value">{{ $data['F'] }}</td>
+                    <td class="col-value">{{ $hilal['F'] }}</td>
                 </tr>
                 <tr>
                     <th>D</th>

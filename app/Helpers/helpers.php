@@ -223,6 +223,7 @@ if (!function_exists('hilal')) {
 
     function hilal($BT, $LT, $e, $d, $tanggal, $TZ, $TT)
     {   
+        // sedikit berbeda dengan kitab irsyadul murid karena nilai JD dan T tidak dibulatkan
         $Aa = (int)($tanggal->year / 100);
         $A = (int)($Aa / 4);
         $B = 2 - $Aa + $A;
@@ -239,6 +240,7 @@ if (!function_exists('hilal')) {
         // Dibulatkan
         // $JD = round($JD, 3);
         $T = ($JD - 2451545) / 36525;
+        // $T = round($T, 9);
         $Sa = (280.46645 + (36000.76983 * $T)) / 360;
         $S = ($Sa - (int)$Sa) * 360;
 
@@ -313,7 +315,7 @@ if (!function_exists('hilal')) {
         }
         $tc = ($PT - $PTc) + $t;
         $hc = asinDegree(sinDegree($LT) * sinDegree($dc) + cosDegree($LT) * cosDegree($dc) * cosDegree($tc));
-
+        
         $p = (384401 * (1 - pow(0.0549, 2)) / (1 + 0.0549 * cosDegree($A1 + $T1)));
         $p1 = $p / 384401;
         $HP = 0.9507 / $p1;
@@ -324,7 +326,7 @@ if (!function_exists('hilal')) {
         if($hc1 >= 0){
             $hc1 += $sdc + $Ref + $Dip;
         }
-
+        
         $AzcBarat = atanDegree(-sinDegree($LT) / tanDegree($tc) + cosDegree($LT) * tanDegree($dc) / sinDegree($tc));
         $AzcUtara = $AzcBarat + 270;
         $z = $AzcUtara - $AzUtara;
@@ -340,8 +342,7 @@ if (!function_exists('hilal')) {
         $FI = (1 + cosDegree($FIa)) / 2;
         $FIPersen = $FI * 100;
         $Ms = $GrbWD + $Dc;
-        // dd($A);
-        return [
+        $result = [
             'Aa' => $Aa,
             'A' => $A,
             'B' => $B,
@@ -424,8 +425,8 @@ if (!function_exists('hilal')) {
             'FIa' => formatDMS($FIa),
             'FI' => $FI ." / " . round($FIPersen, 2) . "%",
             'Ms' => formatJam($Ms, "WD"),
-            
         ];
+        return $result;
     }
 }
 
