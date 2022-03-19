@@ -34,11 +34,12 @@ class IjtimaController extends Controller
     public function create(Request $request)
     {
         $data=null;
-        if(!empty($request->tahun_hijriah) && !empty($request->bulan_hijriah)){
+        if(!empty($request->tahun_hijriah) && !empty($request->bulan_hijriah) && !empty($request->markaz)){
             $bulan = Bulan::find($request->bulan_hijriah);
             $data = ijtima($request->tahun_hijriah,$bulan->nomor,0,7);
             $data['bulan_hijriah'] = $bulan;
             $data['tahun_hijriah'] = $request->tahun_hijriah;
+            $data['markaz'] = $request->markaz;
             $data = collect($data);
 
             if(!empty($request->lintang) && !empty($request->bujur) && !empty($request->tinggi_tempat) && !empty($request->zona_waktu) && !empty($request->ihtiyath) && !empty($request->tanggal)){

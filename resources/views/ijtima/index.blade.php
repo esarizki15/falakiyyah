@@ -55,8 +55,14 @@
                     <div class="row">
                         <div class="col-lg-4 col-md-6">
                             <div class="form-group">
+                                <label for="markaz">Markaz</label>
+                                <input required value="{{ old('markaz') }}" class="form-control-file" id="markaz" name="markaz">
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6">
+                            <div class="form-group">
                                 <label for="lintang">Lintang</label>
-                                <input required type="number" step="any" step="any" value="{{ old('lintang') }}" class="form-control-file" id="lintang" name="lintang">
+                                <input required type="number" step="any" value="{{ old('lintang') }}" class="form-control-file" id="lintang" name="lintang">
                             </div>
                         </div>
                         <div class="col-lg-4 col-md-6">
@@ -96,28 +102,6 @@
                         </div>
                     </div>
                 </form>
-                {{-- <table class="table table-hover display nowrap" style="width:100%">
-                    <thead>
-                        <tr>
-                        <th scope="col">Nama</th>
-                        <th scope="col">Email</th>
-                        <th scope="col">Role</th>
-                        <th scope="col">Aksi</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach ($user as $us)
-                            <tr>
-                                <td>{{ $us->name }}</td>
-                                <td>{{ $us->email }}</td>
-                                <td>{{ $us->role->name }}</td>
-                                <td>
-                                    @include('partial.action', ['data' => $us, 'route'=>'user'])
-                                </td>
-                            </tr>
-                        @endforeach
-                    </tbody>
-                </table> --}}
             </div>
         </div>
       </div>
