@@ -20,7 +20,7 @@ class CreateRolesTable extends Migration
         });
 
         Schema::table('users', function (Blueprint $table) {
-            $table->unsignedTinyInteger('role_id')->default(3);
+            $table->unsignedTinyInteger('role_id')->default(1);
             $table->foreign('role_id')->references('id')->on('roles')->onUpdate('cascade');
         });
     }
