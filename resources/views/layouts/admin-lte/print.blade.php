@@ -80,7 +80,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   </style>
   @yield('style')
 </head>
-<body class="hold-transition sidebar-mini" onload="window.print()" onafterprint="window.close()">
+<body class="hold-transition sidebar-mini" onload="window.print()" onafterprint="history.back()">
 {{-- <body class="hold-transition sidebar-mini" > --}}
 <div class="wrapper">
 
