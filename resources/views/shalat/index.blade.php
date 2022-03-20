@@ -16,7 +16,7 @@
             <div class="card-header header-primary">Data Ijtima</div>
 
             <div class="card-body">
-                <form action="{{ route('ijtima.index') }}" method="get">
+                <form action="{{ route('shalat.index') }}" method="get">
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
@@ -44,10 +44,10 @@
             </div>
         </div>
         <div class="card @if(empty($data)) d-none @endif">
-            <div class="card-header header-primary">Data Hilal</div>
+            <div class="card-header header-primary">Data Shalat</div>
 
             <div class="card-body">
-                <form action="{{ route('ijtima.create') }}" method="get">
+                <form action="{{ route('shalat.create') }}" method="get">
                     @method('get')
                     @csrf
                     <input type="hidden" name="tahun_hijriah" value="{{ request()->tahun_hijriah }}">
@@ -56,43 +56,49 @@
                         <div class="col-lg-4 col-md-6">
                             <div class="form-group">
                                 <label for="markaz">Markaz</label>
-                                <input required value="{{ old('markaz') }}" class="form-control-file" id="markaz" name="markaz">
+                                <input required value="{{ old('markaz') }}" class="form-control" id="markaz" name="markaz">
                             </div>
                         </div>
                         <div class="col-lg-4 col-md-6">
                             <div class="form-group">
                                 <label for="lintang">Lintang</label>
-                                <input required type="number" step="any" value="{{ old('lintang') }}" class="form-control-file" id="lintang" name="lintang">
+                                <input required type="number" step="any" value="{{ old('lintang') }}" class="form-control" id="lintang" name="lintang">
                             </div>
                         </div>
                         <div class="col-lg-4 col-md-6">
                             <div class="form-group">
                                 <label for="bujur">Bujur</label>
-                                <input required type="number" step="any" value="{{ old('bujur') }}" class="form-control-file" id="bujur" name="bujur">
+                                <input required type="number" step="any" value="{{ old('bujur') }}" class="form-control" id="bujur" name="bujur">
                             </div>
                         </div>
                         <div class="col-lg-4 col-md-6">
                             <div class="form-group">
                                 <label for="tinggi_tempat">Tinggi Tempat</label>
-                                <input required type="number" step="any" min="0" value="{{ old('tinggi_tempat') }}" class="form-control-file" id="tinggi_tempat" name="tinggi_tempat">
+                                <input required type="number" step="any" min="0" value="{{ old('tinggi_tempat') }}" class="form-control" id="tinggi_tempat" name="tinggi_tempat">
                             </div>
                         </div>
                         <div class="col-lg-4 col-md-6">
                             <div class="form-group">
                                 <label for="zona_waktu">Zona Waktu</label>
-                                <input required type="number" step="any" value="{{ old('zona_waktu') }}" class="form-control-file" id="zona_waktu" name="zona_waktu">
+                                <input required type="number" step="any" value="{{ old('zona_waktu') }}" class="form-control" id="zona_waktu" name="zona_waktu">
                             </div>
                         </div>
                         <div class="col-lg-4 col-md-6">
                             <div class="form-group">
                                 <label for="ihtiyath">Ihtiyath</label>
-                                <input required type="number" step="any" min="0" value="{{ old('ihtiyath') }}" class="form-control-file" id="ihtiyath" name="ihtiyath">
+                                <input required type="number" step="any" min="0" value="{{ old('ihtiyath') }}" class="form-control" id="ihtiyath" name="ihtiyath">
                             </div>
                         </div>
-                        <div class="col-lg-4 col-md-6">
+                        <div class="col-md-6">
                             <div class="form-group">
-                                <label for="tanggal">Tanggal</label>
-                                <input required type="date" value="{{ ($data != null && $data['DATE_CARBON'] != null)? $data['DATE_CARBON']->toDateString() : \Carbon\Carbon::now()->toDateString() }}" class="form-control-file" id="tanggal" name="tanggal">
+                                <label for="tanggal">Tanggal Ijtima'</label>
+                                <input required type="date" value="{{ ($data != null && $data['DATE_CARBON'] != null)? $data['DATE_CARBON']->toDateString() : \Carbon\Carbon::now()->toDateString() }}" class="form-control" id="tanggal" name="tanggal">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="jumlah_hari">Jumlah Hari</label>
+                                <input required type="number" min="1" value="{{ old('jumlah_hari') }}" class="form-control" id="jumlah_hari" name="jumlah_hari">
                             </div>
                         </div>
                     </div>

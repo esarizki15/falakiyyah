@@ -44,7 +44,7 @@
             </div>
         </div>
         <div class="card @if(empty($data)) d-none @endif">
-            <div class="card-header header-primary">Data Hilal dan Jadwal Sholat</div>
+            <div class="card-header header-primary">Data Hilal</div>
 
             <div class="card-body">
                 <form action="{{ route('ijtima.create') }}" method="get">
@@ -93,12 +93,6 @@
                             <div class="form-group">
                                 <label for="tanggal">Tanggal Ijtima'</label>
                                 <input required type="date" value="{{ ($data != null && $data['DATE_CARBON'] != null)? $data['DATE_CARBON']->toDateString() : \Carbon\Carbon::now()->toDateString() }}" class="form-control" id="tanggal" name="tanggal">
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label for="jumlah_hari">Jumlah Hari</label>
-                                <input required type="number" min="1" value="{{ old('jumlah_hari') }}" class="form-control" id="jumlah_hari" name="jumlah_hari">
                             </div>
                         </div>
                     </div>

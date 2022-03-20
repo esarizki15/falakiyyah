@@ -25,7 +25,7 @@
                                     <div class="col"><h4>{{ strtoupper('pondok pesantren daar el haqqi') }}</h4></div>
                                 </div>
                                 <div class="row mt-2" style="font-size: 18px; font-weight:bold; font-family: 'Reem Kufi', sans-serif;">
-                                    <div class="col"><h4>{{ strtoupper('jadwal sholat & imsakiyah ramadhan 1442 h / 2021 m') }}</h4></div>
+                                    <div class="col"><h4>{{ strtoupper('jadwal sholat & imsakiyah ramadhan '. $data['tahun_hijriah'] .'h / '. $data['THN'] .' m') }}</h4></div>
                                 </div>
                                 <div class="row mt-2" style="font-size: 18px; font-weight:bold; font-family: 'Reem Kufi', sans-serif;">
                                     <div class="col">Kp. & Ds. Ciakar Rt. 02/01 Jl. H. Dirman Gg. Encle, Kec. Panongan, Kab. Tangerang</div>
@@ -74,7 +74,7 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ($data as $index=>$val)
+                                        @foreach ($dataSholat as $index=>$val)
                                             <tr>
                                                 <td>{{ $val["tanggal"] }}</td>
                                                 <td>{{ $val["data"]["Imsak"]["WD"] }}</td>

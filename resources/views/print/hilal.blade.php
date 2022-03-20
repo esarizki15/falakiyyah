@@ -76,11 +76,6 @@
                     @include('partial.ringkasan-hilal')
                 </div>
             </div>
-            <div class="row divIdToPrint pt-5" style='page-break-before: always;'>
-                <div class="col" style="background-color: black !important;">
-                    @include('shalat.print', ['data'=>$dataSholat])
-                </div>
-            </div>
         </div>
     </div>
 </div>
