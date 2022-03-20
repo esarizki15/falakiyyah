@@ -50,7 +50,8 @@ class ShalatController extends Controller
                     'tinggi_tempat' => $request->tinggi_tempat,
                     'zona_waktu' => $request->zona_waktu,
                     'ihtiyath' => $request->ihtiyath,
-                    'tanggal' => $tanggal
+                    'tanggal' => $tanggal,
+                    'markaz' => $request->markaz
                 ]);
                 $hilal = hilal($astronomical['bujur'], $astronomical['lintang'],null,null,$astronomical['tanggal'], 7,$astronomical['tinggi_tempat']);
 

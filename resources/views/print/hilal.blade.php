@@ -38,6 +38,7 @@
                                     <table class="table table-hover display nowrap text-center table-bordered" style="width:100%;">
                                         <thead>
                                             <tr>
+                                                <th>Markaz</th>
                                                 <th>Lintang</th>
                                                 <th>Bujur</th>
                                                 <th>Tinggi Tempat</th>
@@ -47,6 +48,7 @@
                                         </thead>
                                         <tbody>
                                             <tr>
+                                                <td>{{ $astronomical['markaz'] }}</td>
                                                 <td>{{ $astronomical['lintang'] }}</td>
                                                 <td>{{ $astronomical['bujur'] }}</td>
                                                 <td>{{ $astronomical['tinggi_tempat'] }}</td>
