@@ -9,7 +9,7 @@
 <div class="container-fluid">
     <div class="row justify-content-center">
       <div class="col-md-12">
-        <div class="row DivIdToPrint" id="DivIdToPrint">
+        <div class="row DivIdToPrint" style="margin-top: -20px;">
             <div class="col">
                 <div class="row">
                     <div class="col">
@@ -102,7 +102,6 @@
                                     <li>Semua jadwal waktu di atas sudah di tambah dengan ihtiyath waktu 2 menit kecuali waktu terbit</li>
                                     <li>Rumus waktu shalat dihitung berdasarkan metode kitab Anfa' Al Wasilah</li>
                                     <li>Kriteria ketinggian waktu shubuh -20&#730; dan waktu dhuha 4.5</li>
-                                    <li>Berlaku untuk daerah ciakar dan sekitarnya</li>
                                 </ul>
                             </div>
                         </div>
