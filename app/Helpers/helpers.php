@@ -52,7 +52,7 @@ if (!function_exists('atanDegree')) {
 
 if (!function_exists('shalat')) {
 
-    function shalat($BT, $LT, $e, $d, $tanggal, $TZ, $TT, $sd, $rounded = 15, $ihtiyath = 0, $wdFormat = "WD", $metode="irsyad")
+    function shalat($BT, $LT, $e, $d, $tanggal, $TZ, $TT, $sd, $rounded = 15, $ihtiyath = 0, $wdFormat = "WD", $metode="irsyad", $menitOnly = false)
     {
         if ($tanggal != null){
             $e == null ? $e = jeanMeus($tanggal, $rounded)['W'] : $e = $e;
@@ -102,73 +102,73 @@ if (!function_exists('shalat')) {
         }
         return [
             'Dzuhur' => [
-                'WIS' => pecahJam(12, $e, $TZ, $BT, $ihtiyath, null, $metode)['WIS'],
-                'LMT' => pecahJam(12, $e, $TZ, $BT, $ihtiyath, null, $metode)['LMT'],
-                'WD' => pecahJam(12, $e, $TZ, $BT, $ihtiyath, $wdFormat,$metode)['WD'],
-                'WIS_IHTIYATH' => pecahJam(12, $e, $TZ, $BT, $ihtiyath,null, $metode)['WIS_IHTIYATH'],
-                'LMT_IHTIYATH' => pecahJam(12, $e, $TZ, $BT, $ihtiyath,null, $metode)['LMT_IHTIYATH'],
-                'WD_IHTIYATH' => pecahJam(12, $e, $TZ, $BT, $ihtiyath, $wdFormat,null, $metode)['WD_IHTIYATH']
+                'WIS' => pecahJam(12, $e, $TZ, $BT, $ihtiyath, null, $metode, $menitOnly)['WIS'],
+                'LMT' => pecahJam(12, $e, $TZ, $BT, $ihtiyath, null, $metode, $menitOnly)['LMT'],
+                'WD' => pecahJam(12, $e, $TZ, $BT, $ihtiyath, $wdFormat,$metode, $menitOnly)['WD'],
+                'WIS_IHTIYATH' => pecahJam(12, $e, $TZ, $BT, $ihtiyath,null, $metode, $menitOnly)['WIS_IHTIYATH'],
+                'LMT_IHTIYATH' => pecahJam(12, $e, $TZ, $BT, $ihtiyath,null, $metode, $menitOnly)['LMT_IHTIYATH'],
+                'WD_IHTIYATH' => pecahJam(12, $e, $TZ, $BT, $ihtiyath, $wdFormat,null, $metode, $menitOnly)['WD_IHTIYATH']
             ],
             'Ashar' => [
                 'B' => formatDMS(abs($B)),
                 'H' => formatDMS($d),
                 'F' => formatDMS($e),
                 'G' => formatDMS($d),
-                'WIS' => pecahJam($As, $e, $TZ, $BT, $ihtiyath, null, $metode)['WIS'],
-                'LMT' => pecahJam($As, $e, $TZ, $BT, $ihtiyath, null, $metode)['LMT'],
-                'WD' => pecahJam($As, $e, $TZ, $BT, $ihtiyath, $wdFormat, $metode)['WD'],
-                'WIS_IHTIYATH' => pecahJam($As, $e, $TZ, $BT, $ihtiyath, null, $metode)['WIS_IHTIYATH'],
-                'LMT_IHTIYATH' => pecahJam($As, $e, $TZ, $BT, $ihtiyath, null, $metode)['LMT_IHTIYATH'],
-                'WD_IHTIYATH' => pecahJam($As, $e, $TZ, $BT, $ihtiyath, $wdFormat,  $metode)['WD_IHTIYATH'],
+                'WIS' => pecahJam($As, $e, $TZ, $BT, $ihtiyath, null, $metode, $menitOnly)['WIS'],
+                'LMT' => pecahJam($As, $e, $TZ, $BT, $ihtiyath, null, $metode, $menitOnly)['LMT'],
+                'WD' => pecahJam($As, $e, $TZ, $BT, $ihtiyath, $wdFormat, $metode, $menitOnly)['WD'],
+                'WIS_IHTIYATH' => pecahJam($As, $e, $TZ, $BT, $ihtiyath, null, $metode, $menitOnly)['WIS_IHTIYATH'],
+                'LMT_IHTIYATH' => pecahJam($As, $e, $TZ, $BT, $ihtiyath, null, $metode, $menitOnly)['LMT_IHTIYATH'],
+                'WD_IHTIYATH' => pecahJam($As, $e, $TZ, $BT, $ihtiyath, $wdFormat,  $metode, $menitOnly)['WD_IHTIYATH'],
             ],
             'Maghrib' => [
                 'Dip' => formatDMS($Dip),
                 'h' => formatDMS($h),
-                'WIS' => pecahJam($Mg, $e, $TZ, $BT, $ihtiyath, null, $metode)['WIS'],
-                'LMT' => pecahJam($Mg, $e, $TZ, $BT, $ihtiyath, null, $metode)['LMT'],
-                'WD' => pecahJam($Mg, $e, $TZ, $BT, $ihtiyath, $wdFormat, $metode)['WD'],
-                'WIS_IHTIYATH' => pecahJam($Mg, $e, $TZ, $BT, $ihtiyath, null, $metode)['WIS_IHTIYATH'],
-                'LMT_IHTIYATH' => pecahJam($Mg, $e, $TZ, $BT, $ihtiyath, null, $metode)['LMT_IHTIYATH'],
-                'WD_IHTIYATH' => pecahJam($Mg, $e, $TZ, $BT, $ihtiyath, $wdFormat, $metode)['WD_IHTIYATH'],
+                'WIS' => pecahJam($Mg, $e, $TZ, $BT, $ihtiyath, null, $metode, $menitOnly)['WIS'],
+                'LMT' => pecahJam($Mg, $e, $TZ, $BT, $ihtiyath, null, $metode, $menitOnly)['LMT'],
+                'WD' => pecahJam($Mg, $e, $TZ, $BT, $ihtiyath, $wdFormat, $metode, $menitOnly)['WD'],
+                'WIS_IHTIYATH' => pecahJam($Mg, $e, $TZ, $BT, $ihtiyath, null, $metode, $menitOnly)['WIS_IHTIYATH'],
+                'LMT_IHTIYATH' => pecahJam($Mg, $e, $TZ, $BT, $ihtiyath, null, $metode, $menitOnly)['LMT_IHTIYATH'],
+                'WD_IHTIYATH' => pecahJam($Mg, $e, $TZ, $BT, $ihtiyath, $wdFormat, $metode, $menitOnly)['WD_IHTIYATH'],
                 'UTC' => pecahJam($Mg, $e, $TZ, $BT, $ihtiyath)['UTC'],
             ],
             'Isya' => [
-                'WIS' => pecahJam($isya, $e, $TZ, $BT, $ihtiyath, null, $metode)['WIS'],
-                'LMT' => pecahJam($isya, $e, $TZ, $BT, $ihtiyath, null, $metode)['LMT'],
-                'WD' => pecahJam($isya, $e, $TZ, $BT, $ihtiyath, $wdFormat, $metode)['WD'],
-                'WIS_IHTIYATH' => pecahJam($isya, $e, $TZ, $BT, $ihtiyath, null, $metode)['WIS_IHTIYATH'],
-                'LMT_IHTIYATH' => pecahJam($isya, $e, $TZ, $BT, $ihtiyath, null, $metode)['LMT_IHTIYATH'],
-                'WD_IHTIYATH' => pecahJam($isya, $e, $TZ, $BT, $ihtiyath, $wdFormat, $metode)['WD_IHTIYATH']
+                'WIS' => pecahJam($isya, $e, $TZ, $BT, $ihtiyath, null, $metode, $menitOnly)['WIS'],
+                'LMT' => pecahJam($isya, $e, $TZ, $BT, $ihtiyath, null, $metode, $menitOnly)['LMT'],
+                'WD' => pecahJam($isya, $e, $TZ, $BT, $ihtiyath, $wdFormat, $metode, $menitOnly)['WD'],
+                'WIS_IHTIYATH' => pecahJam($isya, $e, $TZ, $BT, $ihtiyath, null, $metode, $menitOnly)['WIS_IHTIYATH'],
+                'LMT_IHTIYATH' => pecahJam($isya, $e, $TZ, $BT, $ihtiyath, null, $metode, $menitOnly)['LMT_IHTIYATH'],
+                'WD_IHTIYATH' => pecahJam($isya, $e, $TZ, $BT, $ihtiyath, $wdFormat, $metode, $menitOnly)['WD_IHTIYATH']
             ],
             'Subuh' => [
-                'WIS' => pecahJam($subuh, $e, $TZ, $BT, $ihtiyath, null, $metode)['WIS'],
-                'LMT' => pecahJam($subuh, $e, $TZ, $BT, $ihtiyath, null, $metode)['LMT'],
-                'WD' => pecahJam($subuh, $e, $TZ, $BT, $ihtiyath, $wdFormat, $metode)['WD'],
-                'WIS_IHTIYATH' => pecahJam($subuh, $e, $TZ, $BT, $ihtiyath, null, $metode)['WIS_IHTIYATH'],
-                'LMT_IHTIYATH' => pecahJam($subuh, $e, $TZ, $BT, $ihtiyath, null, $metode)['LMT_IHTIYATH'],
-                'WD_IHTIYATH' => pecahJam($subuh, $e, $TZ, $BT, $ihtiyath, $wdFormat, $metode)['WD_IHTIYATH']
+                'WIS' => pecahJam($subuh, $e, $TZ, $BT, $ihtiyath, null, $metode, $menitOnly)['WIS'],
+                'LMT' => pecahJam($subuh, $e, $TZ, $BT, $ihtiyath, null, $metode, $menitOnly)['LMT'],
+                'WD' => pecahJam($subuh, $e, $TZ, $BT, $ihtiyath, $wdFormat, $metode, $menitOnly)['WD'],
+                'WIS_IHTIYATH' => pecahJam($subuh, $e, $TZ, $BT, $ihtiyath, null, $metode, $menitOnly)['WIS_IHTIYATH'],
+                'LMT_IHTIYATH' => pecahJam($subuh, $e, $TZ, $BT, $ihtiyath, null, $metode, $menitOnly)['LMT_IHTIYATH'],
+                'WD_IHTIYATH' => pecahJam($subuh, $e, $TZ, $BT, $ihtiyath, $wdFormat, $metode, $menitOnly)['WD_IHTIYATH']
             ],
             'Imsak' => [
-                'WIS' => formatImsak($subuh, "WIS", $ihtiyath),
-                'LMT' => desimalJam($subuh, $e, $TZ, $BT, $ihtiyath)['LMT'],
-                'WD' => desimalJam($subuh, $e, $TZ, $BT, $ihtiyath, $wdFormat)['WD']
+                'WIS' => formatImsak($subuh, "WIS", $ihtiyath, $menitOnly),
+                'LMT' => desimalJam($subuh, $e, $TZ, $BT, $ihtiyath, "LMT",$menitOnly)['LMT'],
+                'WD' => desimalJam($subuh, $e, $TZ, $BT, $ihtiyath, $wdFormat, $menitOnly)['WD']
             ],
             'Terbit' => [
                 'h' => formatDMS($h),
-                'WIS' => pecahJam($terbit, $e, $TZ, $BT, null, null, $metode)['WIS'],
-                'LMT' => pecahJam($terbit, $e, $TZ, $BT, null, null, $metode)['LMT'],
-                'WD' => pecahJam($terbit, $e, $TZ, $BT, null, $wdFormat, $metode)['WD'],
-                'WIS_IHTIYATH' => pecahJam($terbit, $e, $TZ, $BT, null, null, $metode)['WIS_IHTIYATH'],
-                'LMT_IHTIYATH' => pecahJam($terbit, $e, $TZ, $BT, null, null, $metode)['LMT_IHTIYATH'],
-                'WD_IHTIYATH' => pecahJam($terbit, $e, $TZ, $BT, null, $wdFormat, $metode)['WD_IHTIYATH']
+                'WIS' => pecahJam($terbit, $e, $TZ, $BT, null, null, $metode, $menitOnly)['WIS'],
+                'LMT' => pecahJam($terbit, $e, $TZ, $BT, null, null, $metode, $menitOnly)['LMT'],
+                'WD' => pecahJam($terbit, $e, $TZ, $BT, null, $wdFormat, $metode, $menitOnly)['WD'],
+                'WIS_IHTIYATH' => pecahJam($terbit, $e, $TZ, $BT, null, null, $metode, $menitOnly)['WIS_IHTIYATH'],
+                'LMT_IHTIYATH' => pecahJam($terbit, $e, $TZ, $BT, null, null, $metode, $menitOnly)['LMT_IHTIYATH'],
+                'WD_IHTIYATH' => pecahJam($terbit, $e, $TZ, $BT, null, $wdFormat, $metode, $menitOnly)['WD_IHTIYATH']
             ],
             'Dhuha' => [
-                'WIS' => pecahJam($dhuha, $e, $TZ, $BT, $ihtiyath, null, $metode)['WIS'],
-                'LMT' => pecahJam($dhuha, $e, $TZ, $BT, $ihtiyath, null, $metode)['LMT'],
-                'WD' => pecahJam($dhuha, $e, $TZ, $BT, $ihtiyath, $wdFormat, $metode)['WD'],
-                'WIS_IHTIYATH' => pecahJam($dhuha, $e, $TZ, $BT, $ihtiyath, null, $metode)['WIS_IHTIYATH'],
-                'LMT_IHTIYATH' => pecahJam($dhuha, $e, $TZ, $BT, $ihtiyath, null, $metode)['LMT_IHTIYATH'],
-                'WD_IHTIYATH' => pecahJam($dhuha, $e, $TZ, $BT, $ihtiyath, $wdFormat, $metode)['WD_IHTIYATH']
+                'WIS' => pecahJam($dhuha, $e, $TZ, $BT, $ihtiyath, null, $metode, $menitOnly)['WIS'],
+                'LMT' => pecahJam($dhuha, $e, $TZ, $BT, $ihtiyath, null, $metode, $menitOnly)['LMT'],
+                'WD' => pecahJam($dhuha, $e, $TZ, $BT, $ihtiyath, $wdFormat, $metode, $menitOnly)['WD'],
+                'WIS_IHTIYATH' => pecahJam($dhuha, $e, $TZ, $BT, $ihtiyath, null, $metode, $menitOnly)['WIS_IHTIYATH'],
+                'LMT_IHTIYATH' => pecahJam($dhuha, $e, $TZ, $BT, $ihtiyath, null, $metode, $menitOnly)['LMT_IHTIYATH'],
+                'WD_IHTIYATH' => pecahJam($dhuha, $e, $TZ, $BT, $ihtiyath, $wdFormat, $metode, $menitOnly)['WD_IHTIYATH']
             ],
         ];
     }
@@ -654,7 +654,7 @@ if (!function_exists('formatDMS')) {
 
 if (!function_exists('formatJam')) {
 
-    function formatJam($variable, $satuan, $ihtiyath=0)
+    function formatJam($variable, $satuan, $ihtiyath=0, $menitOnly=false)
     {   
         $variable += ($ihtiyath / 60); 
         $variable < 0 ? $variable += 24 : $variable = $variable;
@@ -668,14 +668,25 @@ if (!function_exists('formatJam')) {
         $mb = floor($ma);
         $sa = $ma - $mb;
         $sb = round((($sa/60) * 3600) ,2);
-        if($sb == 60) {
-            $mb += 1;
+        if(!$menitOnly){
+            if($sb == 60) {
+                $mb += 1;
+                $sb = 0;
+            }
+            $formatedDa = strlen($da) == 1 ? 0 . $da : $da;
+            $formatedMb = strlen($mb) == 1 ? 0 . $mb : $mb;
+            $formatedSb = strlen((int)$sb) == 1 ? 0 . $sb : $sb;
+            $hasil = $formatedDa . ":" . $formatedMb . ":" . $formatedSb . " " . $satuan;
+        }else{
+            if(round($sb) >= 30) {
+                $mb += 1;
+            }
             $sb = 0;
+            $formatedDa = strlen($da) == 1 ? 0 . $da : $da;
+            $formatedMb = strlen($mb) == 1 ? 0 . $mb : $mb;
+            $formatedSb = strlen((int)$sb) == 1 ? 0 . $sb : $sb;
+            $hasil = $formatedDa . ":" . $formatedMb . " " . $satuan;
         }
-        $formatedDa = strlen($da) == 1 ? 0 . $da : $da;
-        $formatedMb = strlen($mb) == 1 ? 0 . $mb : $mb;
-        $formatedSb = strlen((int)$sb) == 1 ? 0 . $sb : $sb;
-        $hasil = $formatedDa . ":" . $formatedMb . ":" . $formatedSb . " " . $satuan;
         return $hasil;
     }
 }
@@ -929,7 +940,7 @@ if (!function_exists('angle')) {
 
 if (!function_exists('pecahJam')) {
 
-    function pecahJam($WIS, $e, $TZ, $BT, $ihtiyath = 0, $wdFormat = "WD", $metode="irsyad")
+    function pecahJam($WIS, $e, $TZ, $BT, $ihtiyath = 0, $wdFormat = "WD", $metode="irsyad", $menitOnly=false)
     {   
         $LMT = angle($WIS - $e);
         $WD = angle($LMT + (($TZ * 15) - $BT) / 15);
@@ -938,12 +949,12 @@ if (!function_exists('pecahJam')) {
         }
         // pembulatan
         return [
-            'WIS_IHTIYATH' => formatJam($WIS, 'WIS', $ihtiyath),
-            'LMT_IHTIYATH' => formatJam($LMT, 'LMT', $ihtiyath),
-            'WD_IHTIYATH' => formatJam($WD, $wdFormat, $ihtiyath),
-            'WIS' => formatJam($WIS, 'WIS'),
-            'LMT' => formatJam($LMT, 'LMT'),
-            'WD' => formatJam($WD, $wdFormat),
+            'WIS_IHTIYATH' => formatJam($WIS, 'WIS', $ihtiyath, $menitOnly),
+            'LMT_IHTIYATH' => formatJam($LMT, 'LMT', $ihtiyath, $menitOnly),
+            'WD_IHTIYATH' => formatJam($WD, $wdFormat, $ihtiyath, $menitOnly),
+            'WIS' => formatJam($WIS, 'WIS', $ihtiyath, $menitOnly),
+            'LMT' => formatJam($LMT, 'LMT', $ihtiyath, $menitOnly),
+            'WD' => formatJam($WD, $wdFormat, $ihtiyath, $menitOnly),
             'UTC' => $WD,
         ];
     }
@@ -951,22 +962,22 @@ if (!function_exists('pecahJam')) {
 
 if (!function_exists('desimalJam')) {
 
-    function desimalJam($WIS, $e, $TZ, $BT, $ihtiyath=0, $wdFormat="WD")
+    function desimalJam($WIS, $e, $TZ, $BT, $ihtiyath=0, $wdFormat="WD", $menitOnly)
     {   
         $LMT = angle($WIS - $e);
         $WD = angle($LMT + (($TZ * 15) - $BT) / 15);
         // pembulatan
         return [
             'WIS' => $WIS,
-            'LMT' => formatImsak($LMT, "LMT", $ihtiyath),
-            'WD' => formatImsak($WD, $wdFormat, $ihtiyath), 
+            'LMT' => formatImsak($LMT, "LMT", $ihtiyath, $menitOnly),
+            'WD' => formatImsak($WD, $wdFormat, $ihtiyath, $menitOnly), 
         ];
     }
 }
 
 if (!function_exists('formatImsak')) {
 
-    function formatImsak($WIS, $satuan, $ihtiyath=0)
+    function formatImsak($WIS, $satuan, $ihtiyath=0, $menitOnly)
     {   
         $WIS = $WIS + ($ihtiyath / 60);
         // pembulatan
@@ -985,10 +996,19 @@ if (!function_exists('formatImsak')) {
         }else{
             $mb -= 10;
         }
-        $formatedDa = strlen($da) == 1 ? 0 . $da : $da;
-        $formatedMb = strlen($mb) == 1 ? 0 . $mb : $mb;
-        $formatedSb = strlen((int)$sb) == 1 ? 0 . $sb : $sb;
-        $hasil = $formatedDa . ":" . $formatedMb . ":" . $formatedSb . " " . $satuan;
+        if(!$menitOnly){
+            $formatedDa = strlen($da) == 1 ? 0 . $da : $da;
+            $formatedMb = strlen($mb) == 1 ? 0 . $mb : $mb;
+            $formatedSb = strlen((int)$sb) == 1 ? 0 . $sb : $sb;
+            $hasil = $formatedDa . ":" . $formatedMb . ":" . $formatedSb . " " . $satuan;
+        }else{
+            if($sb >= 30){
+                $mb += 1;
+            }
+            $formatedDa = strlen($da) == 1 ? 0 . $da : $da;
+            $formatedMb = strlen($mb) == 1 ? 0 . $mb : $mb;
+            $hasil = $formatedDa . ":" . $formatedMb . " " . $satuan;
+        }
         return $hasil;
     }
 }

@@ -62,7 +62,7 @@ class ShalatController extends Controller
                         if($i > 0) $dateTmp = $dateTmp->addDays($i);
                         $dataSholat[$i] = collect([
                             'tanggal' => $dateTmp->toDateString(),
-                            'data' => shalat($astronomical['bujur'], $astronomical['lintang'], null, null, $dateTmp, $astronomical['zona_waktu'], $astronomical['tinggi_tempat'], null, 15, $astronomical['ihtiyath'], "WIB", "anfa")
+                            'data' => shalat($astronomical['bujur'], $astronomical['lintang'], null, null, $dateTmp, $astronomical['zona_waktu'], $astronomical['tinggi_tempat'], null, 15, $astronomical['ihtiyath'], "WIB", "anfa", true)
                         ]);
                     }
                     $dataSholat = collect($dataSholat);
