@@ -108,6 +108,17 @@ if (!function_exists('shalat')) {
             $dhuha = acosDegree(tanDegree($LT) * tanDegree($d)+ pow(-cosDegree($LT),-1) * pow(cosDegree($d), -1) * sinDegree(4.5))/15;
         }
         return [
+            'Data_Astro' => [
+                'e' => $e,
+                'd' => $d,
+                'sd' => $sd,
+                'Dip' => $Dip,
+                'h' => $h,
+                'G' => $G,
+                'TT' => $TT,
+                'LT' => $LT,
+                'BT' => $BT
+            ],
             'Dzuhur' => [
                 'WIS' => pecahJam(12, $e, $TZ, $BT, $ihtiyath, null, $metode, $menitOnly)['WIS'],
                 'LMT' => pecahJam(12, $e, $TZ, $BT, $ihtiyath, null, $metode, $menitOnly)['LMT'],
