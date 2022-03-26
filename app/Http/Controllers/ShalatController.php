@@ -40,6 +40,7 @@ class ShalatController extends Controller
             $data['bulan_hijriah'] = $bulan;
             $data['tahun_hijriah'] = $request->tahun_hijriah;
             $data['markaz'] = $request->markaz;
+            $data['metode'] = "anfa";
             $data = collect($data);
 
             if(!empty($request->lintang) && !empty($request->bujur) && !empty($request->tinggi_tempat) && !empty($request->zona_waktu) && !empty($request->ihtiyath) && !empty($request->tanggal)){
@@ -53,8 +54,6 @@ class ShalatController extends Controller
                     'tanggal' => $tanggal,
                     'markaz' => $request->markaz
                 ]);
-                $hilal = hilal($astronomical['bujur'], $astronomical['lintang'],null,null,$astronomical['tanggal'], 7,$astronomical['tinggi_tempat']);
-
                 $dataSholat = [];
                 if(!empty($request->jumlah_hari)){
                     for($i = 0; $i <= $request->jumlah_hari; $i++){
@@ -62,12 +61,12 @@ class ShalatController extends Controller
                         if($i > 0) $dateTmp = $dateTmp->addDays($i);
                         $dataSholat[$i] = collect([
                             'tanggal' => $dateTmp->toDateString(),
-                            'data' => shalat($astronomical['bujur'], $astronomical['lintang'], null, null, $dateTmp, $astronomical['zona_waktu'], $astronomical['tinggi_tempat'], null, 15, $astronomical['ihtiyath'], "WIB", "anfa", true)
+                            'data' => shalat($astronomical['bujur'], $astronomical['lintang'], null, null, $dateTmp, $astronomical['zona_waktu'], $astronomical['tinggi_tempat'], null, 15, $astronomical['ihtiyath'], "WIB", $data['metode'], true)
                         ]);
                     }
                     $dataSholat = collect($dataSholat);
                 }
-                return view('print.jadwal-shalat', compact('data', 'dataSholat','hilal', 'astronomical'));
+                return view('print.jadwal-shalat', compact('data', 'dataSholat', 'astronomical'));
             }
             // Kalau hanya ijtima' return ini
             return view('ijtima.print', compact('data'));

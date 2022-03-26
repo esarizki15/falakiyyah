@@ -54,10 +54,17 @@ if (!function_exists('shalat')) {
 
     function shalat($BT, $LT, $e, $d, $tanggal, $TZ, $TT, $sd, $rounded = 15, $ihtiyath = 0, $wdFormat = "WD", $metode="irsyad", $menitOnly = false)
     {
+        $dataMatahari = dataMatahari($BT, $LT,$e,$d,$tanggal, $TZ,$TT);
         if ($tanggal != null){
-            $e == null ? $e = jeanMeus($tanggal, $rounded)['W'] : $e = $e;
-            $d == null ? $d = jeanMeus($tanggal, $rounded)['Dek'] : $d = $d;
-            $sd == null ? $sd = jeanMeus($tanggal, $rounded)['sd'] : $sd = $sd;
+            if($metode == "irsyad"){
+                $e = ($e == null) ? $dataMatahari['e'] : $e;
+                $d = ($d == null) ? $dataMatahari['d'] : $d;
+                $sd = ($sd == null) ? $dataMatahari['sd'] : $sd;
+            }else{
+                $e = ($e == null) ? jeanMeus($tanggal, $rounded)['W'] : $e;
+                $d = ($d == null) ? jeanMeus($tanggal, $rounded)['Dek'] : $d;
+                $sd = ($sd == null) ? jeanMeus($tanggal, $rounded)['sd'] : $sd;
+            }
         }
         // Ashar
         $B = abs($LT - $d);
@@ -215,6 +222,56 @@ if (!function_exists('jadwalShalat')) {
         // };
         return [ 
             $waktu 
+        ];
+    }
+}
+
+if (!function_exists('dataMatahari')) {
+    function dataMatahari($BT, $LT, $e, $d, $tanggal, $TZ, $TT)
+    {// sedikit berbeda dengan kitab irsyadul murid karena nilai JD dan T tidak dibulatkan
+        $Aa = (int)($tanggal->year / 100);
+        $A = (int)($Aa / 4);
+        $B = 2 - $Aa + $A;
+        $tanggal < \Carbon\Carbon::create("1582-10-15") ? $B = 0 : $B = $B;
+        
+        $maghribUTC = 17.5;
+        // dd($maghribUTC);
+        $JDa = (int)(365.25 * ($tanggal->year + 4716));
+        $JDb = (int)(30.6001 * ($tanggal->month + 1));
+        $JDc = $tanggal->day + ($maghribUTC / 24) + $B - 1524.5 ;
+        $JD = $JDa + $JDb + $JDc;
+        $JD = (int)(365.25 * ($tanggal->year + 4716)) + (int)(30.6001 * ($tanggal->month + 1)) + $tanggal->day + $maghribUTC/24 + $B - 1524.5;
+        // Dibulatkan
+        // $JD = round($JD, 3);
+        $T = ($JD - 2451545) / 36525;
+        // $T = round($T, 9);
+        $Sa = (280.46645 + (36000.76983 * $T)) / 360;
+        $S = ($Sa - (int)$Sa) * 360;
+
+        $ma = (357.52910 + (35999.05030 * $T)) / 360;
+        $m = ($ma - (int)$ma) * 360;
+
+        $Na = (125.04 - (1934.136 * $T)) / 360;
+        $N = ($Na - (int)$Na) * 360;
+        $N < 0 ? $N += 360 : $N;
+
+        $K1 = (17.264 / 3600) * sinDegree($N) + (0.206 / 3600) * sinDegree(2 * $N);
+        $K2 = (-1.264 / 3600) * sinDegree(2 * $S);
+        
+        $R1 = (9.23 / 3600) * cosDegree($N) - (0.090 / 3600) * cosDegree(2 * $N);
+        $R2 = (0.548 / 3600) * cosDegree(2 * $S);
+
+        $Q1 = 23.43929111 + $R1 + $R2 - (46.8150 / 3600) * $T;
+        $E = (6898.06 / 3600) * sinDegree($m) + (72.095 / 3600) * sinDegree(2 * $m) + (0.966 / 3600) * sinDegree(3 * $m);
+        $S1 = $S + $E + $K1 + $K2 - (20.47 / 3600);
+        $d = asinDegree(sinDegree($S1) * sinDegree($Q1));
+        $eHilal = (-1.915 * sinDegree($m) + -0.02 * sinDegree(2 * $m) + 2.466 * sinDegree(2 * $S1) + -0.053 * sinDegree(4 * $S1)) / 15;
+        $sdHilal = 0.267 / (1 - 0.017 * cosDegree($m));
+        // Data Matahari
+        return [
+            'e' => $eHilal,
+            'd' => $d,
+            'sd' => $sdHilal,
         ];
     }
 }
@@ -680,6 +737,10 @@ if (!function_exists('formatJam')) {
         }else{
             if(round($sb) >= 30) {
                 $mb += 1;
+            }
+            if($mb == 60){
+                $mb = 0;
+                $da += 1;
             }
             $sb = 0;
             $formatedDa = strlen($da) == 1 ? 0 . $da : $da;

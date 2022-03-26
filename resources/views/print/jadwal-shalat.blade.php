@@ -102,7 +102,7 @@
                             <div class="col">
                                 <ul>
                                     <li>Semua jadwal waktu di atas sudah di tambah dengan ihtiyath waktu 2 menit kecuali waktu terbit</li>
-                                    <li>Rumus waktu shalat dihitung berdasarkan metode kitab Anfa' Al Wasilah</li>
+                                    <li>Rumus waktu shalat dihitung berdasarkan metode kitab {{ $data['metode'] == "irsyad" ? "Irsyadul Murid" : "Anfa' Al Wasilah" }}</li>
                                     <li>Kriteria ketinggian waktu shubuh -20&#730; dan waktu dhuha 4.5</li>
                                 </ul>
                             </div>
