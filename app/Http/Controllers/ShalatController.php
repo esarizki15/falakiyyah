@@ -40,16 +40,18 @@ class ShalatController extends Controller
             $data['bulan_hijriah'] = $bulan;
             $data['tahun_hijriah'] = $request->tahun_hijriah;
             $data['markaz'] = $request->markaz;
-            $data['metode'] = "anfa";
+            $data['metode'] = "irsyad";
             $data = collect($data);
 
-            if(!empty($request->lintang) && !empty($request->bujur) && !empty($request->tinggi_tempat) && !empty($request->zona_waktu) && !empty($request->ihtiyath) && !empty($request->tanggal)){
+            if(!empty($request->lintang) && !empty($request->bujur) && !empty($request->ihtiyath) && !empty($request->tanggal)){
                 $tanggal = Carbon::create($request->tanggal);
+                $zonaWaktu = intval($request->zona_waktu);
+                $tinggiTempat = intval($request->tinggi_tempat);
                 $astronomical = collect([
                     'lintang' => $request->lintang,
                     'bujur' => $request->bujur,
-                    'tinggi_tempat' => $request->tinggi_tempat,
-                    'zona_waktu' => $request->zona_waktu,
+                    'tinggi_tempat' => $tinggiTempat,
+                    'zona_waktu' => $zonaWaktu,
                     'ihtiyath' => $request->ihtiyath,
                     'tanggal' => $tanggal,
                     'markaz' => $request->markaz

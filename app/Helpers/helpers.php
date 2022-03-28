@@ -109,15 +109,17 @@ if (!function_exists('shalat')) {
         }
         return [
             'Data_Astro' => [
-                'e' => $e,
-                'd' => $d,
-                'sd' => $sd,
-                'Dip' => $Dip,
-                'h' => $h,
-                'G' => $G,
+                'e' => formatDMS($e),
+                'd' => formatDMS($d),
+                'sd' => formatDMS($sd),
+                'Dip' => formatDMS($Dip),
+                'h' => formatDMS($h),
+                'G' => formatDMS($G),
                 'TT' => $TT,
-                'LT' => $LT,
-                'BT' => $BT
+                'LT' => formatDMS($LT),
+                'BT' => formatDMS($BT),
+                'TZ' => $TZ,
+                'T' => $dataMatahari['T']
             ],
             'Dzuhur' => [
                 'WIS' => pecahJam(12, $e, $TZ, $BT, $ihtiyath, null, $metode, $menitOnly)['WIS'],
@@ -125,11 +127,11 @@ if (!function_exists('shalat')) {
                 'WD' => pecahJam(12, $e, $TZ, $BT, $ihtiyath, $wdFormat,$metode, $menitOnly)['WD'],
                 'WIS_IHTIYATH' => pecahJam(12, $e, $TZ, $BT, $ihtiyath,null, $metode, $menitOnly)['WIS_IHTIYATH'],
                 'LMT_IHTIYATH' => pecahJam(12, $e, $TZ, $BT, $ihtiyath,null, $metode, $menitOnly)['LMT_IHTIYATH'],
-                'WD_IHTIYATH' => pecahJam(12, $e, $TZ, $BT, $ihtiyath, $wdFormat,null, $metode, $menitOnly)['WD_IHTIYATH']
+                'WD_IHTIYATH' => pecahJam(12, $e, $TZ, $BT, $ihtiyath, $wdFormat, $metode, $menitOnly)['WD_IHTIYATH']
             ],
             'Ashar' => [
                 'B' => formatDMS(abs($B)),
-                'H' => formatDMS($d),
+                'H' => formatDMS($H),
                 'F' => formatDMS($e),
                 'G' => formatDMS($d),
                 'WIS' => pecahJam($As, $e, $TZ, $BT, $ihtiyath, null, $metode, $menitOnly)['WIS'],
@@ -253,9 +255,9 @@ if (!function_exists('dataMatahari')) {
         $JD = $JDa + $JDb + $JDc;
         $JD = (int)(365.25 * ($tanggal->year + 4716)) + (int)(30.6001 * ($tanggal->month + 1)) + $tanggal->day + $maghribUTC/24 + $B - 1524.5;
         // Dibulatkan
-        // $JD = round($JD, 3);
+        $JD = round($JD, 3); //
         $T = ($JD - 2451545) / 36525;
-        // $T = round($T, 9);
+        $T = round($T, 9); //
         $Sa = (280.46645 + (36000.76983 * $T)) / 360;
         $S = ($Sa - (int)$Sa) * 360;
 
@@ -283,6 +285,7 @@ if (!function_exists('dataMatahari')) {
             'e' => $eHilal,
             'd' => $d,
             'sd' => $sdHilal,
+            'T' => $T,
         ];
     }
 }
@@ -1016,6 +1019,7 @@ if (!function_exists('pecahJam')) {
     {   
         $LMT = angle($WIS - $e);
         $WD = angle($LMT + (($TZ * 15) - $BT) / 15);
+        
         if($metode != "irsyad"){
             $WD = $WIS + ((105-$BT)/15) - $e;
         }
@@ -1024,9 +1028,9 @@ if (!function_exists('pecahJam')) {
             'WIS_IHTIYATH' => formatJam($WIS, 'WIS', $ihtiyath, $menitOnly),
             'LMT_IHTIYATH' => formatJam($LMT, 'LMT', $ihtiyath, $menitOnly),
             'WD_IHTIYATH' => formatJam($WD, $wdFormat, $ihtiyath, $menitOnly),
-            'WIS' => formatJam($WIS, 'WIS', $ihtiyath, $menitOnly),
-            'LMT' => formatJam($LMT, 'LMT', $ihtiyath, $menitOnly),
-            'WD' => formatJam($WD, $wdFormat, $ihtiyath, $menitOnly),
+            'WIS' => formatJam($WIS, 'WIS', 0, $menitOnly),
+            'LMT' => formatJam($LMT, 'LMT', 0, $menitOnly),
+            'WD' => formatJam($WD, $wdFormat, 0, $menitOnly),
             'UTC' => $WD,
         ];
     }
