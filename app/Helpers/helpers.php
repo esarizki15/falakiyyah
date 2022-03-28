@@ -302,7 +302,6 @@ if (!function_exists('hilal')) {
         
         $sd = jeanMeus($tanggal)['sd'];
         $maghribUTC = shalat($BT, $LT, $e, $d, $tanggal, 0, $TT, $sd)['Maghrib']['UTC'];
-        // dd($maghribUTC);
         $JDa = (int)(365.25 * ($tanggal->year + 4716));
         $JDb = (int)(30.6001 * ($tanggal->month + 1));
         $JDc = $tanggal->day + ($maghribUTC / 24) + $B - 1524.5 ;

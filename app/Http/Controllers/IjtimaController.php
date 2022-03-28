@@ -42,18 +42,19 @@ class IjtimaController extends Controller
             $data['markaz'] = $request->markaz;
             $data = collect($data);
 
-            if(!empty($request->lintang) && !empty($request->bujur) && !empty($request->tinggi_tempat) && !empty($request->zona_waktu) && !empty($request->ihtiyath) && !empty($request->tanggal)){
+            if(!empty($request->lintang) && !empty($request->bujur) && !empty($request->tinggi_tempat) && !empty($request->zona_waktu) && !empty($request->tanggal)){
                 $tanggal = Carbon::create($request->tanggal);
+                $ihtiyath = intval($request->ihtiyath);
                 $astronomical = collect([
                     'lintang' => $request->lintang,
                     'bujur' => $request->bujur,
                     'tinggi_tempat' => $request->tinggi_tempat,
                     'zona_waktu' => $request->zona_waktu,
-                    'ihtiyath' => $request->ihtiyath,
+                    'ihtiyath' => $ihtiyath,
                     'tanggal' => $tanggal,
                     'markaz' => $request->markaz,
                 ]);
-                $hilal = hilal($astronomical['bujur'], $astronomical['lintang'],null,null,$astronomical['tanggal'], 7,$astronomical['tinggi_tempat']);
+                $hilal = hilal($astronomical['bujur'], $astronomical['lintang'],null,null,$astronomical['tanggal'], $astronomical['zona_waktu'],$astronomical['tinggi_tempat']);
 
                 $dataSholat = [];
                 if(!empty($request->jumlah_hari)){
