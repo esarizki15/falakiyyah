@@ -504,6 +504,7 @@ if (!function_exists('ijtima')) {
 
     function ijtima($tahun, $bulan, $jenis, $TZ, $rounded = 15)
     {   
+        // $jenis=0; untuk ijtima, 0.5 untuk purnama
         $HY = $tahun + (($bulan * 29.53) / 354.3671);
         $K = round(($HY - 1410) * 12) - $jenis;
         $T = $K / 1200;
