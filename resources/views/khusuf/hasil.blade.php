@@ -294,6 +294,111 @@
                     <td>0.2070 * sin (M) + C1 + C2 + C3 + C4 + C5 + C6</td>
                     <td class="col-value">{{ $data['C'] }}</td>
                 </tr>
+                <tr>
+                    <th>W</th>
+                    <td>abs(cos (F<sub>1</sub>))</td>
+                    <td class="col-value">{{ $data['W'] }}</td>
+                </tr>
+                <tr>
+                    <th>Y</th>
+                    <td>(S * sin (F<sub>1</sub>) + C * cos (F<sub>1</sub>)) * (1 - 0.0048 * W)</td>
+                    <td class="col-value">{{ $data['Y'] }}</td>
+                </tr>
+                <tr>
+                    <th>U1</th>
+                    <td>0.0046 * E * cos (M)</td>
+                    <td class="col-value">{{ $data['U1'] }}</td>
+                </tr>
+                <tr>
+                    <th>U2</th>
+                    <td>-0.0182 * cos (M')</td>
+                    <td class="col-value">{{ $data['U2'] }}</td>
+                </tr>
+                <tr>
+                    <th>U3</th>
+                    <td>0.0004 * cos (2 * M')</td>
+                    <td class="col-value">{{ $data['U3'] }}</td>
+                </tr>
+                <tr>
+                    <th>U4</th>
+                    <td>-0.0005 * cos (M + M')</td>
+                    <td class="col-value">{{ $data['U4'] }}</td>
+                </tr>
+                <tr>
+                    <th>U</th>
+                    <td>0.00059 + U1 + U2 + U3 + U4</td>
+                    <td class="col-value">{{ $data['U'] }}</td>
+                </tr>
+                <tr>
+                    <th>H</th>
+                    <td>1.5800 + U</td>
+                    <td class="col-value">{{ $data['H'] }}</td>
+                </tr>
+                <tr>
+                    <th>P</th>
+                    <td>1.0128 - $U</td>
+                    <td class="col-value">{{ $data['P'] }}</td>
+                </tr>
+                <tr>
+                    <th>R</th>
+                    <td>0.4678 - U</td>
+                    <td class="col-value">{{ $data['R'] }}</td>
+                </tr>
+                <tr>
+                    <th>N</th>
+                    <td>0.5458 + 0.0400 * cos (M')</td>
+                    <td class="col-value">{{ $data['N'] }}</td>
+                </tr>
+                <tr>
+                    <th>MG</th>
+                    <td>(1.0128 - U - abs(Y)) / 0.5450</td>
+                    <td class="col-value">{{ $data['MG'] }}</td>
+                </tr>
+                <tr>
+                    <th>T1</th>
+                    <td>60 / N * &Sqrt;(H<sup>2</sup> - Y<sup>2</sup>) / 60</td>
+                    <td class="col-value">{{ $data['T1'] }}</td>
+                </tr>
+                <tr>
+                    <th>T2</th>
+                    <td>60 / N * &Sqrt;(P<sup>2</sup> - Y<sup>2</sup>) / 60</td>
+                    <td class="col-value">{{ $data['T2'] }}</td>
+                </tr>
+                <tr>
+                    <th>T3</th>
+                    <td>60 / N * &Sqrt;(R<sup>2</sup> - Y<sup>2</sup>) / 60</td>
+                    <td class="col-value">{{ $data['T3'] }}</td>
+                </tr>
+                <tr>
+                    <th>W1</th>
+                    <td>T0 - T1</td>
+                    <td class="col-value">{{ $data['W1'] }}</td>
+                </tr>
+                <tr>
+                    <th>W2</th>
+                    <td>T0 - T2</td>
+                    <td class="col-value">{{ $data['W2'] }}</td>
+                </tr>
+                <tr>
+                    <th>W3</th>
+                    <td>T0 - T3</td>
+                    <td class="col-value">{{ $data['W3'] }}</td>
+                </tr>
+                <tr>
+                    <th>W4</th>
+                    <td>T0 + T3</td>
+                    <td class="col-value">{{ $data['W4'] }}</td>
+                </tr>
+                <tr>
+                    <th>W5</th>
+                    <td>T0 + T2</td>
+                    <td class="col-value">{{ $data['W5'] }}</td>
+                </tr>
+                <tr>
+                    <th>W6</th>
+                    <td>T0 + T1</td>
+                    <td class="col-value">{{ $data['W6'] }}</td>
+                </tr>
             </tbody>
         </table>
     </div>
