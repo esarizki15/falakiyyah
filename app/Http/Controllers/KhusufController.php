@@ -27,13 +27,12 @@ class KhusufController extends Controller
         if(!empty($request->tahun_hijriah) && !empty($request->bulan_hijriah)){
             $bulan = Bulan::find($request->bulan_hijriah);
             $data = khusuf($request->tahun_hijriah,$bulan->nomor,$request->zona_waktu);
-            dd($data);
             $data['bulan_hijriah'] = $bulan;
             $data['tahun_hijriah'] = $request->tahun_hijriah;
             $data['markaz'] = $request->markaz;
             $data = collect($data);
             // Kalau hanya ijtima' return ini
-            return view('purnama.print', compact('data'));
+            return view('khusuf.print', compact('data'));
         }
         
         return redirect()->back();

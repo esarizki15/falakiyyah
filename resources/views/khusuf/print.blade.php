@@ -14,7 +14,7 @@
                     <div class="col"><h4>{{ strtoupper('pondok pesantren daar el haqqi') }}</h4></div>
                 </div>
                 <div class="row mt-2" style="font-size: 18px; font-weight:bold; font-family: 'Reem Kufi', sans-serif;">
-                    <div class="col"><h4>{{ strtoupper("perhitungan purnama ramadhan ". $data['tahun_hijriah'] ." h / ". $data['THN'] ." m") }}</h4></div>
+                    <div class="col"><h4>{{ strtoupper("perhitungan gerhana rabi'ul akhir ". $data['tahun_hijriah'] ." h / ". $data['THN'] ." m") }}</h4></div>
                 </div>
                 <div class="row mt-2" style="font-size: 18px; font-weight:bold; font-family: 'Reem Kufi', sans-serif;">
                     <div class="col">Kp. & Ds. Ciakar Rt. 02/01 Jl. H. Dirman Gg. Encle, Kec. Panongan, Kab. Tangerang</div>
@@ -22,10 +22,10 @@
                 <hr style="border: 2px solid black;">
             </div>
         </div>
-        @include('print.purnama-hasil')
+        @include('khusuf.hasil')
         <div class="row mt-4">
             <div class="col text-center">
-                <span>Terjadi Purnama pada pertengahan bulan {{ $data['bulan_hijriah']['nama'] }} tahun {{ $data['tahun_hijriah'] }}H pada hari {{ $data['Hari'] }} {{ $data['Pasaran'] }} yang bertepatan dengan tanggal {{ $data['TGL'] }} {{ \App\Bulan::where('nomor', $data['BLN'])->first()->nama }} {{ $data['THN'] }} pada pukul {{ explode(" ", $data['WD'])[0] }} WIB</span>
+                <span>Terjadi Gerhana pada pertengahan bulan {{ $data['bulan_hijriah']['nama'] }} tahun {{ $data['tahun_hijriah'] }}H pada hari {{ $data['Hari'] }} {{ $data['Pasaran'] }} yang bertepatan dengan tanggal {{ $data['TGL'] }} {{ \App\Bulan::where('nomor', $data['BLN'])->first()->nama }} {{ $data['THN'] }} pada pukul {{ explode(" ", $data['WD'])[0] }} WIB</span>
             </div>
         </div>
         <div class="row mt-3">
