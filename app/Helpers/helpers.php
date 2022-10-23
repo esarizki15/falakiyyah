@@ -549,7 +549,6 @@ if (!function_exists('ijtima')) {
         $C = (int)(($B - 122.1) / 365.25);
         $D = (int)(365.25 * $C);
         $E = (int)(($B - $D) / 30.6001);
-
         $TGL = (int)($B - $D - (int)(30.6001 * $E));
         $WD > 24 ? $TGL += 1 : $TGL = $TGL;
         $BLN = ($E < 13.5) ? ($E -1) : $E;
