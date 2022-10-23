@@ -686,6 +686,20 @@ if (!function_exists('khusuf')) {
         $C6 = 0.0118 * sinDegree(2 * $F);
         $CI = 0.2070 * sinDegree($M) + $C1 + $C2 + $C3 + $C4 + $C5 + $C6;
 
+        $W = abs(cosDegree($F1));
+        $Y = ($S * sinDegree($F1) + $CI * cosDegree($F1)) * (1 - 0.0048 * $W);
+
+        $U1 = 0.0046 * $E * cosDegree($M);
+        $U2 = -0.0182 * cosDegree($Mq);
+        $U3 = 0.0004 * cosDegree(2 * $Mq);
+        $U4 = -0.0005 * cosDegree($M + $Mq);
+        $U = 0.00059 + $U1 + $U2 + $U3 + $U4;
+
+        $H = 1.5800 + $U;
+        $P = 1.0128 - $U;
+        $R = 0.4678 - $U;
+        $N = 0.5458 + 0.0400 * cosDegree($Mq);
+        $MG = (1.0128 - $U - abs($Y)) / 0.5450;
 
         return [
             'HY' => $HY,
@@ -743,6 +757,18 @@ if (!function_exists('khusuf')) {
             'C5' => formatDMS($C5),
             'C6' => formatDMS($C6),
             'CI' => formatDMS($CI),
+            'W' => formatDMS($W),
+            'Y' => formatDMS($Y),
+            'U1' => formatDMS($U1),
+            'U2' => formatDMS($U2),
+            'U3' => formatDMS($U3),
+            'U4' => formatDMS($U4),
+            'U' => formatDMS($U),
+            'H' => formatDMS($H),
+            'P' => formatDMS($P),
+            'R' => formatDMS($R),
+            'N' => formatDMS($N),
+            'MG' => ($MG),
             'DATE_CARBON' => Carbon::create($THN . '-' . $BLN . '-' . $TGL),
             'Hari' => cariHari(\Carbon\Carbon::create($date))['Hari'],
             'Pasaran' => cariHari(\Carbon\Carbon::create($date))['Pasaran'],
