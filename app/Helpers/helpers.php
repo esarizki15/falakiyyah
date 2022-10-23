@@ -644,8 +644,8 @@ if (!function_exists('khusuf')) {
         $MT = $T1 + $T2 + $T3 + $T4 + $T5 + $T6 + $T7 + $T8 + $T9 + $T10 + $T11 + $T12 + $T13 + $T14 + $T15 + $T16; 
 
         $JDI = $JD + 0.5 + $MT;
-        $W1 = ($JDI - (int)$JDI) * 24;
-        $WD = $W1 + $TZ;
+        $T0 = ($JDI - (int)$JDI) * 24;
+        $WD = $T0 + $TZ;
 
         if((int)$JDI < 2299161){
             $Z = (int)($JDI);
@@ -701,6 +701,17 @@ if (!function_exists('khusuf')) {
         $N = 0.5458 + 0.0400 * cosDegree($Mq);
         $MG = (1.0128 - $U - abs($Y)) / 0.5450;
 
+        $T1 = 60 / $N * sqrt(pow($H, 2) - pow($Y, 2)) / 60;
+        $T2 = 60 / $N * sqrt(pow($P, 2) - pow($Y, 2)) / 60;
+        $T3 = 60 / $N * sqrt(pow($R, 2) - pow($Y, 2)) / 60;
+
+        $W1 = $WD - $T1;
+        $W2 = $WD - $T2;
+        $W3 = $WD - $T3;
+        $W4 = $WD + $T3;
+        $W5 = $WD + $T2;
+        $W6 = $WD + $T1;
+
         return [
             'HY' => $HY,
             'K' => $K,
@@ -731,7 +742,7 @@ if (!function_exists('khusuf')) {
             'T16' => formatDMS($T16),
             'MT' => formatDMS($MT),
             'JDI' => $JDI,
-            'W1' => formatJam($W1, "UT"),
+            'T0' => formatJam($T0, "UT"),
             'WD' => formatJam($WD, "WD"),
             'Z' => $Z,
             'AA' => $AA,
@@ -769,6 +780,15 @@ if (!function_exists('khusuf')) {
             'R' => formatDMS($R),
             'N' => formatDMS($N),
             'MG' => ($MG),
+            'T1' => formatDMS($T1),
+            'T2' => formatDMS($T2),
+            'T3' => formatDMS($T3),
+            'W1' => formatJam($W1, "WIB"),
+            'W2' => formatJam($W2, "WIB"),
+            'W3' => formatJam($W3, "WIB"),
+            'W4' => formatJam($W4, "WIB"),
+            'W5' => formatJam($W5, "WIB"),
+            'W6' => formatJam($W6, "WIB"),
             'DATE_CARBON' => Carbon::create($THN . '-' . $BLN . '-' . $TGL),
             'Hari' => cariHari(\Carbon\Carbon::create($date))['Hari'],
             'Pasaran' => cariHari(\Carbon\Carbon::create($date))['Pasaran'],
