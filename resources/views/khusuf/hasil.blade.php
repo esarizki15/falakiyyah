@@ -1,4 +1,4 @@
-<h4>Data Purnama</h4>
+<h4>Data Gerhana</h4>
 <div class="row">
     <div class="col">
         <table class="table table-hover display nowrap table-bordered table-rumus" style="width:100%;">
@@ -148,17 +148,17 @@
                     <td>JD + 0.5 + MT</td>
                     <td class="col-value">{{ $data['JDI'] }}</td>
                 </tr>
+                <tr>
+                    <th>T0</th>
+                    <td>(JD - (int)JD) * 24</td>
+                    <td class="col-value">{{ $data['T0'] }}</td>
+                </tr>
             </tbody>
         </table>
     </div>
     <div class="col">
         <table class="table table-hover display nowrap table-bordered table-rumus" style="width:100%;">
             <tbody>
-                <tr>
-                    <th>T0</th>
-                    <td>(JD - (int)JD) * 24</td>
-                    <td class="col-value">{{ $data['T0'] }}</td>
-                </tr>
                 <tr>
                     <th>T0 WIB</th>
                     <td>T0 + Time Zone</td>
@@ -339,6 +339,14 @@
                     <td>1.0128 - $U</td>
                     <td class="col-value">{{ $data['P'] }}</td>
                 </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<div class="row divIdToPrint py-5">
+    <div class="col">
+        <table class="table table-hover display nowrap table-bordered table-rumus" style="width:100%;">
+            <tbody>
                 <tr>
                     <th>R</th>
                     <td>0.4678 - U</td>
@@ -372,32 +380,37 @@
                 <tr>
                     <th>W1</th>
                     <td>T0 - T1</td>
-                    <td class="col-value">{{ $data['W1'] }}</td>
+                    <td class="col-value">{{ $data['W1'] }} (Awal Penumbra)</td>
                 </tr>
                 <tr>
                     <th>W2</th>
                     <td>T0 - T2</td>
-                    <td class="col-value">{{ $data['W2'] }}</td>
+                    <td class="col-value">{{ $data['W2'] }} (Awal Gerhana)</td>
                 </tr>
                 <tr>
                     <th>W3</th>
                     <td>T0 - T3</td>
-                    <td class="col-value">{{ $data['W3'] }}</td>
+                    <td class="col-value">{{ $data['W3'] }} (Awal Total)</td>
+                </tr>
+                <tr>
+                    <th>T0</th>
+                    <td>T0</td>
+                    <td class="col-value">{{ $data['WD'] }} (Tengah Gerhana)</td>
                 </tr>
                 <tr>
                     <th>W4</th>
                     <td>T0 + T3</td>
-                    <td class="col-value">{{ $data['W4'] }}</td>
+                    <td class="col-value">{{ $data['W4'] }} (Akhir Total)</td>
                 </tr>
                 <tr>
                     <th>W5</th>
                     <td>T0 + T2</td>
-                    <td class="col-value">{{ $data['W5'] }}</td>
+                    <td class="col-value">{{ $data['W5'] }} (Akhir Gerhana)</td>
                 </tr>
                 <tr>
                     <th>W6</th>
                     <td>T0 + T1</td>
-                    <td class="col-value">{{ $data['W6'] }}</td>
+                    <td class="col-value">{{ $data['W6'] }} (Akhir Penumbra)</td>
                 </tr>
             </tbody>
         </table>

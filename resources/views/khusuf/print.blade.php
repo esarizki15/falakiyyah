@@ -23,9 +23,40 @@
             </div>
         </div>
         @include('khusuf.hasil')
-        <div class="row mt-4">
-            <div class="col text-center">
-                <span>Terjadi Gerhana pada pertengahan bulan {{ $data['bulan_hijriah']['nama'] }} tahun {{ $data['tahun_hijriah'] }}H pada hari {{ $data['Hari'] }} {{ $data['Pasaran'] }} yang bertepatan dengan tanggal {{ $data['TGL'] }} {{ \App\Bulan::where('nomor', $data['BLN'])->first()->nama }} {{ $data['THN'] }} pada pukul {{ explode(" ", $data['WD'])[0] }} WIB</span>
+        
+        <div class="row">
+            <div class="col-12 text-center">
+                <h3><i>KESIMPULAN</i></h3>
+            </div>
+            <div class="col-12">
+                <ul>
+                    <li>
+                        Terjadi Gerhana pada pertengahan bulan {{ $data['bulan_hijriah']['nama'] }} tahun {{ $data['tahun_hijriah'] }}H pada hari {{ $data['Hari'] }} {{ $data['Pasaran'] }} yang bertepatan dengan tanggal {{ $data['TGL'] }} {{ \App\Bulan::where('nomor', $data['BLN'])->first()->nama }} {{ $data['THN'] }}
+                    </li>
+                    <li>
+                        Awal Gerhana = {{ $data['W2'] }}
+                    </li>
+                    <li>
+                        Awal Gerhana Total = {{ $data['W3'] }}
+                    </li>
+                    <li>
+                        Tengah Gerhana = {{ $data['WD'] }}
+                    </li>
+                    <li>
+                        Akhir Gerhana Total = {{ $data['W4'] }}
+                    </li>
+                    <li>
+                        Akhir Gerhana = {{ $data['W5'] }}
+                    </li>
+                    <li>
+                        Durasi Gerhana = {{ $data['DURASI'] }}
+                    </li>
+                    <li>
+                        Durasi Gerhana Total = {{ $data['DURASI_TOTAL'] }}
+                    </li>
+                    <li>Dihitung menggunakan algoritma yang tertulis pada kitab irsyadul murid cetakan ke 4</li>
+                    <li>Berlaku untuk daerah dengan zona waktu GMT +7 (WIB)</li>
+                </ul>
             </div>
         </div>
         <div class="row mt-3">
