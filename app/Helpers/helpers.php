@@ -601,6 +601,154 @@ if (!function_exists('ijtima')) {
         ];
     }
 }
+if (!function_exists('khusuf')) {
+
+    function khusuf($tahun, $bulan, $TZ, $rounded = 15)
+    {   
+        $HY = $tahun + (($bulan * 29.53) / 354.3671);
+        $K = round(($HY - 1410) * 12) - 0.5;
+        $T = $K / 1200;
+        $Fa = (164.2159288 + 390.67050274 * $K + -0.0016341 * pow($T, 2) + -0.00000227 * pow($T, 3)) / 360;
+        $F = ($Fa - (int)$Fa) * 360;
+        $JD = 2447740.651689 + 29.530588853 * $K + (0.0001337 * pow($T, 2)) + (0.00000015 * pow($T, 3));
+        $Ma = (207.9623868 + 29.10535669 * $K + -0.0000218 * pow($T, 2)) / 360;
+        $M = ($Ma - (int)$Ma) * 360;
+        // M'
+        $MQa = (111.1797657 + 385.81693528 * $K + 0.0107438 * pow($T, 2) + 0.00001239 * pow($T, 3)) / 360;
+        $Mq = ($MQa - (int)$MQa) * 360;
+        
+        $omegaQ = (326.4991207 + -1.5637558 * $K + 0.0020691 * pow($T, 2) + 0.00000215 * pow($T, 3)) / 360;
+        $omega = ($omegaQ - (int)$omegaQ) * 360;
+        $F1a = (($F - 0.02665 * sinDegree($omega)) / 360);
+        $F1 = ($F1a - (int)$F1a) * 360;
+        $A1a = ((285.9142682 + 0.107408 * $K + -0.009173 * pow($T, 2)) / 360);
+        $A1 = ($A1a - (int)$A1a) * 360;
+        $E = 1 - 0.002516 * $T + -0.0000074 * pow($T, 2);
+
+        $T1 = -0.4065 * sinDegree($Mq);
+        $T2 = 0.1727 * $E * sinDegree($M);
+        $T3 = 0.0161 * sinDegree(2 * $Mq);
+        $T4 = -0.0097 * sinDegree(2 * $F1);
+        $T5 = 0.0073 * $E * sinDegree($Mq - $M);
+        $T6 = -0.005 * $E * sinDegree($Mq + $M);
+        $T7 = -0.0023 * sinDegree($Mq - (2 * $F1));
+        $T8 = 0.0021 * $E * sinDegree(2 * $M);
+        $T9 = 0.0012 * sinDegree($Mq + (2 * $F1));
+        $T10 = 0.0006 * $E * sinDegree((2 * $Mq) + $M);
+        $T11 = -0.0004 * sinDegree(3 * $Mq);
+        $T12 = -0.0003 * $E * sinDegree($M + (2 * $F1));
+        $T13 = 0.0003 * sinDegree($A1);
+        $T14 = -0.0002 * $E * sinDegree($M + (2 * $F1));
+        $T15 = -0.0002 * $E * sinDegree((2 * $Mq) - $M);
+        $T16 = -0.0002 * sinDegree($omega);
+        $MT = $T1 + $T2 + $T3 + $T4 + $T5 + $T6 + $T7 + $T8 + $T9 + $T10 + $T11 + $T12 + $T13 + $T14 + $T15 + $T16; 
+
+        $JDI = $JD + 0.5 + $MT;
+        $W1 = ($JDI - (int)$JDI) * 24;
+        $WD = $W1 + $TZ;
+
+        if((int)$JDI < 2299161){
+            $Z = (int)($JDI);
+            $A = $Z;
+        }else{
+            $Z = (int)($JDI);
+            $AA = (int)(($Z - 1867216.25) / 36524.25);
+            $A = $Z + 1 + $AA - (int)($AA / 4);
+        }
+
+        $B = $A + 1524;
+        $C = (int)(($B - 122.1) / 365.25);
+        $D = (int)(365.25 * $C);
+        $E2 = (int)(($B - $D) / 30.6001);
+        $TGL = (int)($B - $D - (int)(30.6001 * $E2));
+        $WD > 24 ? $TGL += 1 : $TGL = $TGL;
+        $BLN = ($E2 < 13.5) ? ($E2 -1) : $E2;
+
+        // Harus di uji
+        $THN = $BLN < 2.5 ? ($C - 4715 ): ($C - 4716);
+
+        $PA = (int)($Z) + 2;
+
+        $date =  $THN . "-" . $BLN . "-" . $TGL;
+
+        $S1 = -0.0048 * $E * cosDegree($M);
+        $S2 = 0.0020 * $E * cosDegree(2*$M);
+        $S3 = -0.3299 * cosDegree($Mq);
+        $S4 = -0.0060 * $E * cosDegree($M + $Mq);
+        $S5 = 0.0041 * $E * cosDegree($M - $Mq);
+        $S = 5.2207 + $S1 + $S2 + $S3 + $S4 + $S5;
+
+        $C1 = 0.0024 * $E * sinDegree(2 * $M);
+        $C2 = -0.0392 * sinDegree($Mq);
+        $C3 = 0.0116 * sinDegree(2 * $Mq);
+        $C4 = -0.0073 * $E * sinDegree($M + $Mq);
+        $C5 = -0.0067 * $E * sinDegree($M - $Mq);
+        $C6 = 0.0118 * sinDegree(2 * $F);
+        $CI = 0.2070 * sinDegree($M) + $C1 + $C2 + $C3 + $C4 + $C5 + $C6;
+
+
+        return [
+            'HY' => $HY,
+            'K' => $K,
+            'T' => $T,
+            'F' => formatDMS($F),
+            'JD' => $JD,
+            'M' => formatDMS($M),
+            'Mq' => formatDMS($Mq),
+            'omega' => formatDMS($omega),
+            'F1' => formatDMS($F1),
+            'A1' => formatDMS($A1),
+            'E' => ($E),
+            'T1' => formatDMS($T1),
+            'T2' => formatDMS($T2),
+            'T3' => formatDMS($T3),
+            'T4' => formatDMS($T4),
+            'T5' => formatDMS($T5),
+            'T6' => formatDMS($T6),
+            'T7' => formatDMS($T7),
+            'T8' => formatDMS($T8),
+            'T9' => formatDMS($T9),
+            'T10' => formatDMS($T10),
+            'T11' => formatDMS($T11),
+            'T12' => formatDMS($T12),
+            'T13' => formatDMS($T13),
+            'T14' => formatDMS($T14),
+            'T15' => formatDMS($T15),
+            'T16' => formatDMS($T16),
+            'MT' => formatDMS($MT),
+            'JDI' => $JDI,
+            'W1' => formatJam($W1, "UT"),
+            'WD' => formatJam($WD, "WD"),
+            'Z' => $Z,
+            'AA' => $AA,
+            'A' => $A,
+            'B' => $B,
+            'C' => $C,
+            'D' => $D,
+            'E2' => $E2,
+            'TGL' => $TGL,
+            'BLN' => $BLN,
+            'PA' => $PA,
+            'THN' => $THN,
+            'S1' => formatDMS($S1),
+            'S2' => formatDMS($S2),
+            'S3' => formatDMS($S3),
+            'S4' => formatDMS($S4),
+            'S5' => formatDMS($S5),
+            'S' => formatDMS($S),
+            'C1' => formatDMS($C1),
+            'C2' => formatDMS($C2),
+            'C3' => formatDMS($C3),
+            'C4' => formatDMS($C4),
+            'C5' => formatDMS($C5),
+            'C6' => formatDMS($C6),
+            'CI' => formatDMS($CI),
+            'DATE_CARBON' => Carbon::create($THN . '-' . $BLN . '-' . $TGL),
+            'Hari' => cariHari(\Carbon\Carbon::create($date))['Hari'],
+            'Pasaran' => cariHari(\Carbon\Carbon::create($date))['Pasaran'],
+        ];
+    }
+}
 
 if (!function_exists('quarter')) {
 

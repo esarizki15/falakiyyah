@@ -26,7 +26,8 @@ class KhusufController extends Controller
         $data=null;
         if(!empty($request->tahun_hijriah) && !empty($request->bulan_hijriah)){
             $bulan = Bulan::find($request->bulan_hijriah);
-            $data = ijtima($request->tahun_hijriah,$bulan->nomor,0.5,7);
+            $data = khusuf($request->tahun_hijriah,$bulan->nomor,$request->zona_waktu);
+            dd($data);
             $data['bulan_hijriah'] = $bulan;
             $data['tahun_hijriah'] = $request->tahun_hijriah;
             $data['markaz'] = $request->markaz;
