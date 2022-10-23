@@ -14,7 +14,7 @@
                     <div class="col"><h4>{{ strtoupper('pondok pesantren daar el haqqi') }}</h4></div>
                 </div>
                 <div class="row mt-2" style="font-size: 18px; font-weight:bold; font-family: 'Reem Kufi', sans-serif;">
-                    <div class="col"><h4>{{ strtoupper("perhitungan gerhana rabi'ul akhir ". $data['tahun_hijriah'] ." h / ". $data['THN'] ." m") }}</h4></div>
+                    <div class="col"><h4>{{ strtoupper("perhitungan gerhana bulan rabi'ul akhir ". $data['tahun_hijriah'] ." h / ". $data['THN'] ." m") }}</h4></div>
                 </div>
                 <div class="row mt-2" style="font-size: 18px; font-weight:bold; font-family: 'Reem Kufi', sans-serif;">
                     <div class="col">Kp. & Ds. Ciakar Rt. 02/01 Jl. H. Dirman Gg. Encle, Kec. Panongan, Kab. Tangerang</div>
@@ -31,7 +31,7 @@
             <div class="col-12">
                 <ul>
                     <li>
-                        Terjadi Gerhana pada pertengahan bulan {{ $data['bulan_hijriah']['nama'] }} tahun {{ $data['tahun_hijriah'] }}H pada hari {{ $data['Hari'] }} {{ $data['Pasaran'] }} yang bertepatan dengan tanggal {{ $data['TGL'] }} {{ \App\Bulan::where('nomor', $data['BLN'])->first()->nama }} {{ $data['THN'] }}
+                        Terjadi Gerhana Bulan pada pertengahan bulan {{ $data['bulan_hijriah']['nama'] }} tahun {{ $data['tahun_hijriah'] }}H pada hari {{ $data['Hari'] }} {{ $data['Pasaran'] }} yang bertepatan dengan tanggal {{ $data['TGL'] }} {{ \App\Bulan::where('nomor', $data['BLN'])->first()->nama }} {{ $data['THN'] }}
                     </li>
                     <li>
                         Awal Gerhana = {{ $data['W2'] }}

@@ -1,4 +1,4 @@
-<h4>Data Gerhana</h4>
+<h4>Data Gerhana Bulan</h4>
 <div class="row">
     <div class="col">
         <table class="table table-hover display nowrap table-bordered table-rumus" style="width:100%;">
