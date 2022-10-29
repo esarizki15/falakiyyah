@@ -60,7 +60,7 @@
                 </tr>
                 <tr>
                     <th>T1</th>
-                    <td>(-0.4065 * sin M'</td>
+                    <td>-0.4065 * sin M'</td>
                     <td class="col-value">{{ $data['T1'] }}</td>
                 </tr>
                 <tr>
@@ -140,7 +140,7 @@
                 </tr>
                 <tr>
                     <th>MT</th>
-                    <td>T1 s/d T13</td>
+                    <td>T1 s/d T16</td>
                     <td class="col-value">{{ $data['MT'] }}</td>
                 </tr>
                 <tr>

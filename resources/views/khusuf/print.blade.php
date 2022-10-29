@@ -34,6 +34,9 @@
                         Terjadi Gerhana Bulan pada pertengahan bulan {{ $data['bulan_hijriah']['nama'] }} tahun {{ $data['tahun_hijriah'] }}H pada hari {{ $data['Hari'] }} {{ $data['Pasaran'] }} yang bertepatan dengan tanggal {{ $data['TGL'] }} {{ \App\Bulan::where('nomor', $data['BLN'])->first()->nama }} {{ $data['THN'] }}
                     </li>
                     <li>
+                        Jenis Gerhana = {{ $data['MG'] >= 1 ? 'Total' : 'Sebagian' }}
+                    </li>
+                    <li>
                         Awal Gerhana = {{ $data['W2'] }}
                     </li>
                     <li>
