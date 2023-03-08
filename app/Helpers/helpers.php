@@ -440,7 +440,7 @@ if (!function_exists('hilal')) {
             't' => formatDMS($t),
             'Grb' => [
                 'LMT' => formatJam($Grb, "LMT"),
-                'WD' => formatJam($GrbWD, "WD")
+                'WD' => formatJam($GrbWD, "WIB") //WD
             ],
             'Az' => [
                 'Barat' => formatDMS($AzBarat),
@@ -494,7 +494,7 @@ if (!function_exists('hilal')) {
             'EL' => formatDMS($EL),
             'FIa' => formatDMS($FIa),
             'FI' => $FI ." / " . round($FIPersen, 2) . "%",
-            'Ms' => formatJam($Ms, "WD"),
+            'Ms' => formatJam($Ms, "WIB"), //WD
         ];
         return $result;
     }
@@ -583,7 +583,7 @@ if (!function_exists('ijtima')) {
             'MT' => formatDMS($MT),
             'JDI' => $JDI,
             'W1' => formatJam($W1, "UT"),
-            'WD' => formatJam($WD, "WD"),
+            'WD' => formatJam($WD, "WIB"), //WD
             'Z' => $Z,
             'AA' => $AA,
             'A' => $A,

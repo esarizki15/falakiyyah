@@ -55,7 +55,6 @@ class IjtimaController extends Controller
                     'markaz' => $request->markaz,
                 ]);
                 $hilal = hilal($astronomical['bujur'], $astronomical['lintang'],null,null,$astronomical['tanggal'], $astronomical['zona_waktu'],$astronomical['tinggi_tempat']);
-
                 // $dataSholat = [];
                 // if(!empty($request->jumlah_hari)){
                 //     for($i = 0; $i <= $request->jumlah_hari; $i++){
@@ -68,7 +67,7 @@ class IjtimaController extends Controller
                 //     }
                 //     $dataSholat = collect($dataSholat);
                 // }
-                return view('print.hilal', compact('data', 'astronomical', 'hilal'));
+                return view('print.hilal-2', compact('data', 'astronomical', 'hilal'));
             }
             // Kalau hanya ijtima' return ini
             return view('ijtima.print', compact('data'));
