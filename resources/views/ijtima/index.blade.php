@@ -56,39 +56,39 @@
                         <div class="col-lg-4 col-md-6">
                             <div class="form-group">
                                 <label for="markaz">Markaz</label>
-                                <input required value="{{ old('markaz') }}" class="form-control" id="markaz" name="markaz">
+                                <input required value="Pelabuhan Ratu" class="form-control" id="markaz" name="markaz">
                             </div>
                         </div>
                         <div class="col-lg-4 col-md-6">
                             <div class="form-group">
                                 <label for="lintang">Lintang</label>
-                                <input required type="number" step="any" value="{{ old('lintang') }}" class="form-control" id="lintang" name="lintang">
+                                <input required type="number" step="any" value="-7.02905" class="form-control" id="lintang" name="lintang">
                             </div>
                         </div>
                         <div class="col-lg-4 col-md-6">
                             <div class="form-group">
                                 <label for="bujur">Bujur</label>
-                                <input required type="number" step="any" value="{{ old('bujur') }}" class="form-control" id="bujur" name="bujur">
+                                <input required type="number" step="any" value="106.55772" class="form-control" id="bujur" name="bujur">
                             </div>
                         </div>
                         <div class="col-lg-4 col-md-6">
                             <div class="form-group">
                                 <label for="tinggi_tempat">Tinggi Tempat</label>
-                                <input required type="number" step="any" min="0" value="{{ old('tinggi_tempat') }}" class="form-control" id="tinggi_tempat" name="tinggi_tempat">
+                                <input required type="number" step="any" min="0" value="52.865" class="form-control" id="tinggi_tempat" name="tinggi_tempat">
                             </div>
                         </div>
                         <div class="col-lg-4 col-md-6">
                             <div class="form-group">
                                 <label for="zona_waktu">Zona Waktu</label>
-                                <input required type="number" step="any" value="{{ old('zona_waktu') }}" class="form-control" id="zona_waktu" name="zona_waktu">
+                                <input required type="number" step="any" value="7" class="form-control" id="zona_waktu" name="zona_waktu">
                             </div>
                         </div>
-                        <div class="col-lg-4 col-md-6">
+                        {{-- <div class="col-lg-4 col-md-6">
                             <div class="form-group">
                                 <label for="ihtiyath">Ihtiyath</label>
                                 <input required type="number" step="any" min="0" value="{{ old('ihtiyath') }}" class="form-control" id="ihtiyath" name="ihtiyath">
-                            </div>
-                        </div>
+                            </div>  
+                        </div> --}}
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="tanggal">Tanggal Ijtima'</label>

@@ -56,19 +56,19 @@ class IjtimaController extends Controller
                 ]);
                 $hilal = hilal($astronomical['bujur'], $astronomical['lintang'],null,null,$astronomical['tanggal'], $astronomical['zona_waktu'],$astronomical['tinggi_tempat']);
 
-                $dataSholat = [];
-                if(!empty($request->jumlah_hari)){
-                    for($i = 0; $i <= $request->jumlah_hari; $i++){
-                        $dateTmp = clone $tanggal;
-                        if($i > 0) $dateTmp = $dateTmp->addDays($i);
-                        $dataSholat[$i] = collect([
-                            'tanggal' => $dateTmp->toDateString(),
-                            'data' => shalat($astronomical['bujur'], $astronomical['lintang'], null, null, $dateTmp, $astronomical['zona_waktu'], $astronomical['tinggi_tempat'], null, 15, $astronomical['ihtiyath'], "WIB", "anfa")
-                        ]);
-                    }
-                    $dataSholat = collect($dataSholat);
-                }
-                return view('print.hilal', compact('data', 'astronomical', 'hilal', 'dataSholat'));
+                // $dataSholat = [];
+                // if(!empty($request->jumlah_hari)){
+                //     for($i = 0; $i <= $request->jumlah_hari; $i++){
+                //         $dateTmp = clone $tanggal;
+                //         if($i > 0) $dateTmp = $dateTmp->addDays($i);
+                //         $dataSholat[$i] = collect([
+                //             'tanggal' => $dateTmp->toDateString(),
+                //             'data' => shalat($astronomical['bujur'], $astronomical['lintang'], null, null, $dateTmp, $astronomical['zona_waktu'], $astronomical['tinggi_tempat'], null, 15, $astronomical['ihtiyath'], "WIB", "anfa")
+                //         ]);
+                //     }
+                //     $dataSholat = collect($dataSholat);
+                // }
+                return view('print.hilal', compact('data', 'astronomical', 'hilal'));
             }
             // Kalau hanya ijtima' return ini
             return view('ijtima.print', compact('data'));
