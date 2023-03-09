@@ -77,6 +77,14 @@
                 </a>
               </li>
               <li class="nav-item">
+                <a href="{{ route('kusuf.index') }}" class="nav-link {{ (request()->is('kusuf*')) ? 'active' : '' }}">
+                  <i class="nav-icon fas fa-sun"></i>
+                  <p>
+                    Khusuf
+                  </p>
+                </a>
+              </li>
+              <li class="nav-item">
                 <a href="{{ route('shalat.index') }}" class="nav-link {{ (request()->is('shalat*')) ? 'active' : '' }}">
                   <i class="nav-icon fas fa-clock"></i>
                   <p>

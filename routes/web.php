@@ -28,6 +28,7 @@ Route::resource('shalat', 'ShalatController')->middleware('auth');
 Route::resource('ijtima', 'IjtimaController')->middleware('auth');
 Route::resource('purnama', 'PurnamaController')->middleware('auth');
 Route::resource('khusuf', 'KhusufController')->middleware('auth');
+Route::resource('kusuf', 'KusufController')->middleware('auth');
 Route::resource('profile', 'ProfileController')->middleware('auth');
 Route::resource('user', 'UserController')->middleware('auth');
 Route::resource('role', 'RoleController')->middleware('auth');
