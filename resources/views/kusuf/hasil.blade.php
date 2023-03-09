@@ -20,127 +20,62 @@
                 </tr>
                 <tr>
                     <th>F</th>
-                    <td>Frac((164.2159288 + 390.67050274 * K + -0.0016341 * T<sup>2</sup> + -0.00000227 * T<sup>3</sup>) / 360) * 360</td>
+                    <td>Frac((164.2162296 + 390.67050646 * K + -0.0016528 * T<sup>2</sup>) / 360) * 360</td>
                     <td class="col-value">{{ $data['F'] }}</td>
                 </tr>
                 <tr>
                     <th>JD</th>
-                    <td>2447740.651689 + 29.530588853 * K + 0.0001337 * T<sup>2</sup> - 0.00000015 * T<sup>3</sup></td>
+                    <td>2447740.652 + 29.53058868 * K</td>
                     <td class="col-value">{{ $data['JD'] }}</td>
                 </tr>
                 <tr>
                     <th>M</th>
-                    <td>Frac((207.9623868 + 29.10535669 * K + -0.0000218 * T<sup>2</sup>) / 360) * 360</td>
+                    <td>Frac((207.9587074 + 29.10535608 * K + -0.0000333 * T<sup>2</sup>) / 360) * 360</td>
                     <td class="col-value">{{ $data['M'] }}</td>
                 </tr>
                 <tr>
                     <th>M'</th>
-                    <td>Frac((111.1797657 + 385.81693528 * K + 0.0107438 * T<sup>2</sup> + 0.00001239 * T<sup>3</sup>) / 360) * 360</td>
+                    <td>Frac((111.1791307 + 385.81691806 * K + 0.0107306 * T<sup>2</sup>) / 360) * 360</td>
                     <td class="col-value">{{ $data['Mq'] }}</td>
                 </tr>
                 <tr>
-                    <th>&Omega;</th>
-                    <td>Frac((326.4991207 + -1.5637558 * K + 0.0020691 * T<sup>2</sup> + 0.00000215 * T<sup>3</sup>) / 360) * 360</td>
-                    <td class="col-value">{{ $data['omega'] }}</td>
-                </tr>
-                <tr>
-                    <th>F<sub>1</sub></th>
-                    <td>Frac((F - 0.02665 * Sin &Omega;) / 360) * 360</td>
-                    <td class="col-value">{{ $data['F1'] }}</td>
-                </tr>
-                <tr>
-                    <th>A<sub>1</sub></th>
-                    <td>Frac((285.9142682 + 0.107408 * K + -0.009173 * T<sup>2</sup>) / 360) * 360</td>
-                    <td class="col-value">{{ $data['A1'] }}</td>
-                </tr>
-                <tr>
-                    <th>E</th>
-                    <td>1 - 0.002516 * T + -0.0000074 * T<sup>2</sup></td>
-                    <td class="col-value">{{ $data['E'] }}</td>
-                </tr>
-                <tr>
                     <th>T1</th>
-                    <td>-0.4065 * sin M'</td>
+                    <td>(0.1734 - 0.000393 * T) * sin M'</td>
                     <td class="col-value">{{ $data['T1'] }}</td>
                 </tr>
                 <tr>
                     <th>T2</th>
-                    <td>0.1727 * E *  sin M</td>
+                    <td>0.0021 * sin 2M</td>
                     <td class="col-value">{{ $data['T2'] }}</td>
                 </tr>
                 <tr>
                     <th>T3</th>
-                    <td>0.0161 * sin 2M'</td>
+                    <td>-0.4068 * sin M'</td>
                     <td class="col-value">{{ $data['T3'] }}</td>
                 </tr>
                 <tr>
                     <th>T4</th>
-                    <td>-0.0097 * sin 2F<sub>1</sub></td>
+                    <td>-0.0161 * sin 2M'</td>
                     <td class="col-value">{{ $data['T4'] }}</td>
                 </tr>
                 <tr>
                     <th>T5</th>
-                    <td>0.0073 * E *  sin (M' - M)</td>
+                    <td>-0.0051 *  sin (M + M')</td>
                     <td class="col-value">{{ $data['T5'] }}</td>
                 </tr>
                 <tr>
                     <th>T6</th>
-                    <td>-0.005 * E * sin(M' + M)</td>
+                    <td>-0.0074 * sin(M - M')</td>
                     <td class="col-value">{{ $data['T6'] }}</td>
                 </tr>
                 <tr>
                     <th>T7</th>
-                    <td>-0.0023 * sin(M' - (2 * F<sub>1</sub>))</td>
+                    <td>-0.0104 * sin 2F</td>
                     <td class="col-value">{{ $data['T7'] }}</td>
                 </tr>
                 <tr>
-                    <th>T8</th>
-                    <td>0.0021 * E * sin(2M)</td>
-                    <td class="col-value">{{ $data['T8'] }}</td>
-                </tr>
-                <tr>
-                    <th>T9</th>
-                    <td>0.0012 * sin(M' + (2 * F<sub>1</sub>))</td>
-                    <td class="col-value">{{ $data['T9'] }}</td>
-                </tr>
-                <tr>
-                    <th>T10</th>
-                    <td>0.0006 * E * sin((2 * M') + M)</td>
-                    <td class="col-value">{{ $data['T10'] }}</td>
-                </tr>
-                <tr>
-                    <th>T11</th>
-                    <td>-0.0004 * sin (3 * M')</td>
-                    <td class="col-value">{{ $data['T11'] }}</td>
-                </tr>
-                <tr>
-                    <th>T12</th>
-                    <td>-0.0003 * E * sin (M + (2 * F<sub>1</sub>))</td>
-                    <td class="col-value">{{ $data['T12'] }}</td>
-                </tr>
-                <tr>
-                    <th>T13</th>
-                    <td>0.0003 * sin (A<sub>1</sub>)</td>
-                    <td class="col-value">{{ $data['T13'] }}</td>
-                </tr>
-                <tr>
-                    <th>T14</th>
-                    <td>-0.0002 * E * sin (M + (2 * F<sub>1</sub>))</td>
-                    <td class="col-value">{{ $data['T14'] }}</td>
-                </tr>
-                <tr>
-                    <th>T15</th>
-                    <td>-0.0002 * E * sin ((2 * M') - M)</td>
-                    <td class="col-value">{{ $data['T15'] }}</td>
-                </tr>
-                <tr>
-                    <th>T16</th>
-                    <td>-0.0002 * sin (&Omega;)</td>
-                    <td class="col-value">{{ $data['T16'] }}</td>
-                </tr>
-                <tr>
                     <th>MT</th>
-                    <td>T1 s/d T16</td>
+                    <td>T1 s/d T7</td>
                     <td class="col-value">{{ $data['MT'] }}</td>
                 </tr>
                 <tr>
