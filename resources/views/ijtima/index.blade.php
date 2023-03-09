@@ -47,6 +47,7 @@
             <div class="card-header header-primary">Data Hilal</div>
 
             <div class="card-body">
+                {{-- ijtima.create --}}
                 <form action="{{ route('ijtima.create') }}" method="get">
                     @method('get')
                     @csrf

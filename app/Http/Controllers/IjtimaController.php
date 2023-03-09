@@ -67,7 +67,56 @@ class IjtimaController extends Controller
                 //     }
                 //     $dataSholat = collect($dataSholat);
                 // }
-                return view('print.hilal-2', compact('data', 'astronomical', 'hilal'));
+                return view('print.hilal', compact('data', 'astronomical', 'hilal'));
+            }
+            // Kalau hanya ijtima' return ini
+            return view('ijtima.print', compact('data'));
+        }
+        
+        return redirect()->back();
+    }
+    
+    public function ringkasan(Request $request)
+    {
+        $data=null;
+        if(!empty($request->tahun_hijriah) && !empty($request->bulan_hijriah) && !empty($request->markaz)){
+            $bulan = Bulan::find($request->bulan_hijriah);
+            $nextMonth = Bulan::find((int)$request->bulan_hijriah + 1);
+            $data = ijtima($request->tahun_hijriah,$bulan->nomor,0,7);
+            $purnama = ijtima($request->tahun_hijriah,$nextMonth->nomor,0.5,7);
+            $purnama['bulan_hijriah'] = $nextMonth;
+            $purnama['tahun_hijriah'] = $request->tahun_hijriah;
+            $data['bulan_hijriah'] = $bulan;
+            $data['tahun_hijriah'] = $request->tahun_hijriah;
+            $data['markaz'] = $request->markaz;
+            $data = collect($data);
+            // dd($purnama)
+            if(!empty($request->lintang) && !empty($request->bujur) && !empty($request->tinggi_tempat) && !empty($request->zona_waktu) && !empty($request->tanggal)){
+                $tanggal = Carbon::create($request->tanggal);
+                $ihtiyath = intval($request->ihtiyath);
+                $astronomical = collect([
+                    'lintang' => $request->lintang,
+                    'bujur' => $request->bujur,
+                    'tinggi_tempat' => $request->tinggi_tempat,
+                    'zona_waktu' => $request->zona_waktu,
+                    'ihtiyath' => $ihtiyath,
+                    'tanggal' => $tanggal,
+                    'markaz' => $request->markaz,
+                ]);
+                $hilal = hilal($astronomical['bujur'], $astronomical['lintang'],null,null,$astronomical['tanggal'], $astronomical['zona_waktu'],$astronomical['tinggi_tempat']);
+                // $dataSholat = [];
+                // if(!empty($request->jumlah_hari)){
+                //     for($i = 0; $i <= $request->jumlah_hari; $i++){
+                //         $dateTmp = clone $tanggal;
+                //         if($i > 0) $dateTmp = $dateTmp->addDays($i);
+                //         $dataSholat[$i] = collect([
+                //             'tanggal' => $dateTmp->toDateString(),
+                //             'data' => shalat($astronomical['bujur'], $astronomical['lintang'], null, null, $dateTmp, $astronomical['zona_waktu'], $astronomical['tinggi_tempat'], null, 15, $astronomical['ihtiyath'], "WIB", "anfa")
+                //         ]);
+                //     }
+                //     $dataSholat = collect($dataSholat);
+                // }
+                return view('print.hilal-2', compact('data', 'purnama', 'astronomical', 'hilal'));
             }
             // Kalau hanya ijtima' return ini
             return view('ijtima.print', compact('data'));

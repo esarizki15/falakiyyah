@@ -39,7 +39,6 @@
                                 </div>
                                 <div class="row">
                                     <div class="col">
-
                                         <table class="table table-hover display nowrap text-center table-bordered"
                                             style="width:100%;">
                                             <tbody>
@@ -97,6 +96,33 @@
                                                 </tr>
                                             </tbody>
                                         </table>
+                                        {{-- <hr class="my-5" style="border: 1px solid red;">
+                                        <table class="table table-hover display nowrap text-center table-bordered"
+                                            style="width:100%;">
+                                            <tbody>
+                                                <tr>
+                                                    <th style="width: 50%;">Purnama</th>
+                                                    <td>{{ $purnama['bulan_hijriah']['nama'] }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th style="width: 50%;">Tahun</th>
+                                                    <td>{{ $purnama['tahun_hijriah'] . ' H' }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th style="width: 50%;">Tanggal</th>
+                                                    <td>{{ $purnama['DATE_CARBON']->format('d M Y') }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th style="width: 50%;">Hari</th>
+                                                    <td>{{ $purnama['Hari'] . ' - ' . $purnama['Pasaran'] }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th style="width: 50%;">Jam</th>
+                                                    <td>{{ $purnama["WD"] }}</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                        <hr class="my-5" style="border: 1px solid red;"> --}}
                                     </div>
                                 </div>
                             </div>
