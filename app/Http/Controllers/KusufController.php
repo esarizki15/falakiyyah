@@ -18,7 +18,7 @@ class KusufController extends Controller
             $data['tahun_hijriah'] = $request->tahun_hijriah;
             $data = collect($data);
         }
-        return view('khusuf.index', compact('bulan', 'data'));
+        return view('kusuf.index', compact('bulan', 'data'));
     }
 
     public function create(Request $request)
@@ -26,13 +26,13 @@ class KusufController extends Controller
         $data=null;
         if(!empty($request->tahun_hijriah) && !empty($request->bulan_hijriah)){
             $bulan = Bulan::find($request->bulan_hijriah);
-            $data = khusuf($request->tahun_hijriah,$bulan->nomor,$request->zona_waktu);
+            $data = kusuf($request->tahun_hijriah,$bulan->nomor,$request->zona_waktu);
             $data['bulan_hijriah'] = $bulan;
             $data['tahun_hijriah'] = $request->tahun_hijriah;
             $data['markaz'] = $request->markaz;
             $data = collect($data);
             // Kalau hanya ijtima' return ini
-            return view('khusuf.print', compact('data'));
+            return view('kusuf.print', compact('data'));
         }
         
         return redirect()->back();

@@ -797,6 +797,162 @@ if (!function_exists('khusuf')) {
         ];
     }
 }
+if (!function_exists('kusuf')) {
+
+    function kusuf($tahun, $bulan, $TZ, $rounded = 15)
+    {   
+        $HY = $tahun + (($bulan * 29.53) / 354.3671);
+        $K = round(($HY - 1410) * 12);
+        $T = $K / 1200;
+        $Fa = (164.2162296 + 390.67050646 * $K + -0.0016528 * pow($T, 2)) / 360;
+        $F = ($Fa - (int)$Fa) * 360;
+        $JD = 2447740.652 + 29.53058868 * $K;
+        $Ma = (207.9587074 + 29.10535608 * $K + -0.0000333 * pow($T, 2)) / 360;
+        $M = ($Ma - (int)$Ma) * 360;
+        // M'
+        $MQa = (111.1791307 + 385.81691806 * $K + 0.0107306 * pow($T, 2)) / 360;
+        $Mq = ($MQa - (int)$MQa) * 360;
+        
+        $T1 = (0.1734 - 0.000393 * $T) * sinDegree($M);
+        $T2 = 0.0021 * sinDegree(2 * $M);
+        $T3 = -0.4068 * sinDegree($Mq);
+        $T4 = 0.0161 * sinDegree(2 * $Mq);
+        $T5 = -0.0051 * sinDegree($M + $Mq);
+        $T6 = -0.0074 * sinDegree($M - $Mq);
+        $T7 = -0.0104 * sinDegree(2 * $F);
+        $MT = $T1 + $T2 + $T3 + $T4 + $T5 + $T6 + $T7; 
+
+        $JDI = $JD + 0.5 + $MT;
+        $T0 = ($JDI - (int)$JDI) * 24;
+        $WD = $T0 + $TZ;
+
+        if((int)$JDI < 2299161){
+            $Z = (int)($JDI);
+            $A = $Z;
+        }else{
+            $Z = (int)($JDI);
+            $AA = (int)(($Z - 1867216.25) / 36524.25);
+            $A = $Z + 1 + $AA - (int)($AA / 4);
+        }
+
+        $B = $A + 1524;
+        $C = (int)(($B - 122.1) / 365.25);
+        $D = (int)(365.25 * $C);
+        $E2 = (int)(($B - $D) / 30.6001);
+        $TGL = (int)($B - $D - (int)(30.6001 * $E2));
+        $WD > 24 ? $TGL += 1 : $TGL = $TGL;
+        $BLN = ($E2 < 13.5) ? ($E2 -1) : $E2;
+
+        // Harus di uji
+        $THN = $BLN < 2.5 ? ($C - 4715 ): ($C - 4716);
+
+        $PA = (int)($Z) + 2;
+
+        $date =  $THN . "-" . $BLN . "-" . $TGL;
+
+        $S1 = -0.0048 * cosDegree($M);
+        $S2 = 0.0020 * cosDegree(2*$M);
+        $S3 = -0.3283 * cosDegree($Mq);
+        $S4 = -0.0060 * cosDegree($M + $Mq);
+        $S5 = 0.0041 * cosDegree($M - $Mq);
+        $S = 5.19595 + $S1 + $S2 + $S3 + $S4 + $S5;
+
+        $C1 = 0.0024 * sinDegree(2 * $M);
+        $C2 = -0.0390 * sinDegree($Mq);
+        $C3 = 0.0115 * sinDegree(2 * $Mq);
+        $C4 = -0.0073 * sinDegree($M + $Mq);
+        $C5 = -0.0067 * sinDegree($M - $Mq);
+        $C6 = 0.0117 * sinDegree(2 * $F);
+        $CI = 0.2070 * sinDegree($M) + $C1 + $C2 + $C3 + $C4 + $C5 + $C6;
+
+        $W = abs(cosDegree($F)); // ?
+        $Y = ($S * sinDegree($F) + $CI * cosDegree($F));
+        // irsyadul murid 190
+        // kalau hasil positif => utara
+        // kalau negatif => selata
+        $U = 0.00059 + 0.0046 * cosDegree($M) -0.0182 * cosDegree($Mq) + 0.0004 * cosDegree(2 * $Mq) -0.0005 * cosDegree($M + $Mq);
+
+        $P = 1 + $U + 0.5460;
+        $Q = 1 + $U;
+        $N = 0.5458 + 0.0400 * cosDegree($Mq);
+
+        $saatKusuf = 60 / $N * sqrt(pow($P, 2) - pow($Y, 2)) / 60;
+        $saatMukts = 60 / $N * sqrt(pow($Q, 2) - pow($Y, 2)) / 60;
+        $tengahGerhana = $T0;
+        $awalGerhana = $T0 - $T1;
+        $awalTotal = $T0 - $T2;
+        $akhirTotal = $T0 + $T2;
+        $akhirGerhana = $T0 + $T1;
+
+        // need code sds and sdm for kusuf kulli and halqy
+
+        // this code, for juz'i
+        $Mag = (1.5432 + $U - abs($y)) / (0.5460 + 2 * $U);
+
+        return [
+            'HY' => $HY,
+            'K' => $K,
+            'T' => $T,
+            'F' => formatDMS($F),
+            'JD' => $JD,
+            'M' => formatDMS($M),
+            'Mq' => formatDMS($Mq),
+            'T1' => formatDMS($T1),
+            'T2' => formatDMS($T2),
+            'T3' => formatDMS($T3),
+            'T4' => formatDMS($T4),
+            'T5' => formatDMS($T5),
+            'T6' => formatDMS($T6),
+            'T7' => formatDMS($T7),
+            'MT' => formatDMS($MT),
+            'JDI' => $JDI,
+            'T0' => formatJam($T0, "UT"),
+            'WD' => formatJam($WD, "WIB"),
+            'Z' => $Z,
+            'AA' => $AA,
+            'A' => $A,
+            'B' => $B,
+            'C' => $C,
+            'D' => $D,
+            'E2' => $E2,
+            'TGL' => $TGL,
+            'BLN' => $BLN,
+            'PA' => $PA,
+            'THN' => $THN,
+            'S1' => formatDMS($S1),
+            'S2' => formatDMS($S2),
+            'S3' => formatDMS($S3),
+            'S4' => formatDMS($S4),
+            'S5' => formatDMS($S5),
+            'S' => formatDMS($S),
+            'C1' => formatDMS($C1),
+            'C2' => formatDMS($C2),
+            'C3' => formatDMS($C3),
+            'C4' => formatDMS($C4),
+            'C5' => formatDMS($C5),
+            'C6' => formatDMS($C6),
+            'CI' => formatDMS($CI),
+            'W' => formatDMS($W),
+            'Y' => formatDMS($Y),
+            'U' => formatDMS($U),
+            'P' => formatDMS($P),
+            'Q' => formatDMS($Q),
+            'N' => formatDMS($N),
+            'saatKusuf' => formatDMS($saatKusuf),
+            'saatMukts' => formatDMS($saatMukts),
+            'tengahGerhana' => formatJam($tengahGerhana, "WIB"),
+            'awalGerhana' => formatJam($awalGerhana, "WIB"),
+            'awalTotal' => formatJam($awalTotal, "WIB"),
+            'akhirTotal' => formatJam($akhirTotal, "WIB"),
+            'akhirGerhana' => formatJam($akhirGerhana, "WIB"),
+            '$Mag' => $Mag,
+            'DURASI' => formatJam($akhirGerhana - $awalGerhana, ""),
+            'DATE_CARBON' => Carbon::create($THN . '-' . $BLN . '-' . $TGL),
+            'Hari' => cariHari(\Carbon\Carbon::create($date))['Hari'],
+            'Pasaran' => cariHari(\Carbon\Carbon::create($date))['Pasaran'],
+        ];
+    }
+}
 
 if (!function_exists('quarter')) {
 

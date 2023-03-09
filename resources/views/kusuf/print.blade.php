@@ -22,7 +22,7 @@
                 <hr style="border: 2px solid black;">
             </div>
         </div>
-        @include('khusuf.hasil')
+        @include('kusuf.hasil')
         
         <div class="row">
             <div class="col-12 text-center">
@@ -37,25 +37,22 @@
                         Jenis Gerhana = {{ $data['MG'] >= 1 ? 'Total' : 'Sebagian' }}
                     </li>
                     <li>
-                        Awal Gerhana = {{ $data['W2'] }}
+                        Awal Gerhana = {{ $data['awalGerhana'] }}
                     </li>
                     <li>
-                        Awal Gerhana Total = {{ $data['W3'] }}
+                        Awal Gerhana Total = {{ $data['awalTotal'] }}
                     </li>
                     <li>
-                        Tengah Gerhana = {{ $data['WD'] }}
+                        Tengah Gerhana = {{ $data['tengahGerhana'] }}
                     </li>
                     <li>
-                        Akhir Gerhana Total = {{ $data['W4'] }}
+                        Akhir Gerhana Total = {{ $data['akhirTotal'] }}
                     </li>
                     <li>
-                        Akhir Gerhana = {{ $data['W5'] }}
+                        Akhir Gerhana = {{ $data['akhirGerhana'] }}
                     </li>
                     <li>
                         Durasi Gerhana = {{ $data['DURASI'] }}
-                    </li>
-                    <li>
-                        Durasi Gerhana Total = {{ $data['DURASI_TOTAL'] }}
                     </li>
                     <li>Dihitung menggunakan algoritma yang tertulis pada kitab irsyadul murid cetakan ke 4</li>
                     <li>Berlaku untuk daerah dengan zona waktu GMT +7 (WIB)</li>
