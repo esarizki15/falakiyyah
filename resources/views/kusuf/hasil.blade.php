@@ -79,12 +79,12 @@
                     <td class="col-value">{{ $data['MT'] }}</td>
                 </tr>
                 <tr>
-                    <th>JD Istiqbal</th>
+                    <th>JD Ijtima'</th>
                     <td>JD + 0.5 + MT</td>
                     <td class="col-value">{{ $data['JDI'] }}</td>
                 </tr>
                 <tr>
-                    <th>T0</th>
+                    <th>Tengah Gerhana</th>
                     <td>(JD - (int)JD) * 24</td>
                     <td class="col-value">{{ $data['T0'] }}</td>
                 </tr>
@@ -95,13 +95,13 @@
         <table class="table table-hover display nowrap table-bordered table-rumus" style="width:100%;">
             <tbody>
                 <tr>
-                    <th>T0 WIB</th>
-                    <td>T0 + Time Zone</td>
+                    <th>Tengah Gerhana WIB</th>
+                    <td>Tengah Gerhana + Time Zone</td>
                     <td class="col-value">{{ $data['WD'] }}</td>
                 </tr>
                 <tr>
                     <th>Z</th>
-                    <td>int(JD Istiqbal)</td>
+                    <td>int(JD Ijtima')</td>
                     <td class="col-value">{{ $data['Z'] }}</td>
                 </tr>
                 <tr>
@@ -166,62 +166,62 @@
                 </tr>
                 <tr>
                     <th>S1</th>
-                    <td>-0.0048 * E * cos (M)</td>
+                    <td>-0.0048 * cos (M)</td>
                     <td class="col-value">{{ $data['S1'] }}</td>
                 </tr>
                 <tr>
                     <th>S2</th>
-                    <td>0.0020 * E * cos (2*M)</td>
+                    <td>0.0020 * cos (2*M)</td>
                     <td class="col-value">{{ $data['S2'] }}</td>
                 </tr>
                 <tr>
                     <th>S3</th>
-                    <td>-0.3299 * cos (M')</td>
+                    <td>-0.3283 * cos (M')</td>
                     <td class="col-value">{{ $data['S3'] }}</td>
                 </tr>
                 <tr>
                     <th>S4</th>
-                    <td>-0.0060 * E * cos (M + M')</td>
+                    <td>-0.0060 * cos (M + M')</td>
                     <td class="col-value">{{ $data['S4'] }}</td>
                 </tr>
                 <tr>
                     <th>S5</th>
-                    <td>0.0041 * E * cos (M - M')</td>
+                    <td>0.0041 * cos (M - M')</td>
                     <td class="col-value">{{ $data['S5'] }}</td>
                 </tr>
                 <tr>
                     <th>S</th>
-                    <td>5.2207 + S1 + S2 + S3 + S4 + S5</td>
+                    <td>5.19595 + S1 + S2 + S3 + S4 + S5</td>
                     <td class="col-value">{{ $data['S'] }}</td>
                 </tr>
                 <tr>
                     <th>C1</th>
-                    <td>0.0024 * E * sin (2 * M)</td>
+                    <td>0.0024 * sin (2 * M)</td>
                     <td class="col-value">{{ $data['C1'] }}</td>
                 </tr>
                 <tr>
                     <th>C2</th>
-                    <td>-0.0392 * sin (M')</td>
+                    <td>-0.0390 * sin (M')</td>
                     <td class="col-value">{{ $data['C2'] }}</td>
                 </tr>
                 <tr>
                     <th>C3</th>
-                    <td>0.0116 * sin (2 * M')</td>
+                    <td>0.0115 * sin (2 * M')</td>
                     <td class="col-value">{{ $data['C3'] }}</td>
                 </tr>
                 <tr>
                     <th>C4</th>
-                    <td>-0.0073 * E * sin (M + M')</td>
+                    <td>-0.0073 * sin (M + M')</td>
                     <td class="col-value">{{ $data['C4'] }}</td>
                 </tr>
                 <tr>
                     <th>C5</th>
-                    <td>-0.0067 * E * sin (M - M')</td>
+                    <td>-0.0067 * sin (M - M')</td>
                     <td class="col-value">{{ $data['C5'] }}</td>
                 </tr>
                 <tr>
                     <th>C6</th>
-                    <td>0.0118 * sin (2 * F)</td>
+                    <td>0.0117 * sin (2 * F)</td>
                     <td class="col-value">{{ $data['C6'] }}</td>
                 </tr>
                 <tr>
@@ -230,48 +230,18 @@
                     <td class="col-value">{{ $data['C'] }}</td>
                 </tr>
                 <tr>
-                    <th>W</th>
-                    <td>abs(cos (F<sub>1</sub>))</td>
-                    <td class="col-value">{{ $data['W'] }}</td>
-                </tr>
-                <tr>
                     <th>Y</th>
-                    <td>(S * sin (F<sub>1</sub>) + C * cos (F<sub>1</sub>)) * (1 - 0.0048 * W)</td>
+                    <td>S * sin F + C * cos F (Gamma)</td>
                     <td class="col-value">{{ $data['Y'] }}</td>
                 </tr>
                 <tr>
-                    <th>U1</th>
-                    <td>0.0046 * E * cos (M)</td>
-                    <td class="col-value">{{ $data['U1'] }}</td>
-                </tr>
-                <tr>
-                    <th>U2</th>
-                    <td>-0.0182 * cos (M')</td>
-                    <td class="col-value">{{ $data['U2'] }}</td>
-                </tr>
-                <tr>
-                    <th>U3</th>
-                    <td>0.0004 * cos (2 * M')</td>
-                    <td class="col-value">{{ $data['U3'] }}</td>
-                </tr>
-                <tr>
-                    <th>U4</th>
-                    <td>-0.0005 * cos (M + M')</td>
-                    <td class="col-value">{{ $data['U4'] }}</td>
-                </tr>
-                <tr>
                     <th>U</th>
-                    <td>0.00059 + U1 + U2 + U3 + U4</td>
+                    <td>0.00059 + 0.0046 * cos M - 0.0182 * cos M' + 0.0004 * cos 2M' - 0.0005 * cos(M + M')</td>
                     <td class="col-value">{{ $data['U'] }}</td>
                 </tr>
                 <tr>
-                    <th>H</th>
-                    <td>1.5800 + U</td>
-                    <td class="col-value">{{ $data['H'] }}</td>
-                </tr>
-                <tr>
                     <th>P</th>
-                    <td>1.0128 - $U</td>
+                    <td>1 + U + 0.5460</td>
                     <td class="col-value">{{ $data['P'] }}</td>
                 </tr>
             </tbody>
@@ -283,9 +253,9 @@
         <table class="table table-hover display nowrap table-bordered table-rumus" style="width:100%;">
             <tbody>
                 <tr>
-                    <th>R</th>
-                    <td>0.4678 - U</td>
-                    <td class="col-value">{{ $data['R'] }}</td>
+                    <th>Q</th>
+                    <td>1 + U</td>
+                    <td class="col-value">{{ $data['Q'] }}</td>
                 </tr>
                 <tr>
                     <th>N</th>
@@ -293,59 +263,34 @@
                     <td class="col-value">{{ $data['N'] }}</td>
                 </tr>
                 <tr>
-                    <th>MG</th>
-                    <td>(1.0128 - U - abs(Y)) / 0.5450</td>
-                    <td class="col-value">{{ $data['MG'] }}</td>
-                </tr>
-                <tr>
                     <th>T1</th>
-                    <td>60 / N * &Sqrt;(H<sup>2</sup> - Y<sup>2</sup>) / 60</td>
+                    <td>60 / N * &Sqrt;(P<sup>2</sup> - Y<sup>2</sup>) / 60</td>
                     <td class="col-value">{{ $data['T1'] }}</td>
                 </tr>
                 <tr>
                     <th>T2</th>
-                    <td>60 / N * &Sqrt;(P<sup>2</sup> - Y<sup>2</sup>) / 60</td>
+                    <td>60 / N * &Sqrt;(Q<sup>2</sup> - Y<sup>2</sup>) / 60</td>
                     <td class="col-value">{{ $data['T2'] }}</td>
                 </tr>
                 <tr>
-                    <th>T3</th>
-                    <td>60 / N * &Sqrt;(R<sup>2</sup> - Y<sup>2</sup>) / 60</td>
-                    <td class="col-value">{{ $data['T3'] }}</td>
-                </tr>
-                <tr>
-                    <th>W1</th>
-                    <td>T0 - T1</td>
-                    <td class="col-value">{{ $data['W1'] }} (Awal Penumbra)</td>
-                </tr>
-                <tr>
-                    <th>W2</th>
-                    <td>T0 - T2</td>
-                    <td class="col-value">{{ $data['W2'] }} (Awal Gerhana)</td>
-                </tr>
-                <tr>
-                    <th>W3</th>
-                    <td>T0 - T3</td>
-                    <td class="col-value">{{ $data['W3'] }} (Awal Total)</td>
-                </tr>
-                <tr>
-                    <th>T0</th>
+                    <th>Tengah Gerhana</th>
                     <td>T0</td>
-                    <td class="col-value">{{ $data['WD'] }} (Tengah Gerhana)</td>
+                    <td class="col-value">{{ $data['tengahGerhana'] }}</td>
                 </tr>
                 <tr>
-                    <th>W4</th>
-                    <td>T0 + T3</td>
-                    <td class="col-value">{{ $data['W4'] }} (Akhir Total)</td>
+                    <th>Awal Gerhana</th>
+                    <td>T0 - T1</td>
+                    <td class="col-value">{{ $data['awalGerhana'] }}</td>
                 </tr>
                 <tr>
-                    <th>W5</th>
-                    <td>T0 + T2</td>
-                    <td class="col-value">{{ $data['W5'] }} (Akhir Gerhana)</td>
+                    <th>Akhir Gerhana</th>
+                    <td>T0 - T3</td>
+                    <td class="col-value">{{ $data['akhirGerhana'] }}</td>
                 </tr>
                 <tr>
-                    <th>W6</th>
-                    <td>T0 + T1</td>
-                    <td class="col-value">{{ $data['W6'] }} (Akhir Penumbra)</td>
+                    <th>MG</th>
+                    <td>(1.5432 + U - abs(Y)) / (0.5460 + 2 * U)</td>
+                    <td class="col-value">{{ $data['MG'] }}</td>
                 </tr>
             </tbody>
         </table>
