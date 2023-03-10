@@ -877,12 +877,12 @@ if (!function_exists('kusuf')) {
 
         $saatKusuf = 60 / $N * sqrt(pow($P, 2) - pow($Y, 2)) / 60;
         $saatMukts = 60 / $N * sqrt(pow($Q, 2) - pow($Y, 2)) / 60;
-        $tengahGerhana = $WD;
-        $awalGerhana = $WD - $saatKusuf;
-        // $awalTotal = $WD - $T2;
-        // $akhirTotal = $WD + $T2;
-        $akhirGerhana = $WD + $saatKusuf;
-
+        $tengahGerhana = $T0;
+        $awalGerhana = $T0 - $saatKusuf;
+        // $awalTotal = $T0 - $T2;
+        // $akhirTotal = $T0 + $T2;
+        $akhirGerhana = $T0 + $saatKusuf;
+        // dd($Y);
         // need code sds and sdm for kusuf kulli and halqy
 
         // this code, for juz'i
@@ -932,7 +932,7 @@ if (!function_exists('kusuf')) {
             'C6' => formatDMS($C6),
             'CI' => formatDMS($CI),
             'W' => formatDMS($W),
-            'Y' => $Y,
+            'Y' => formatDMS($Y),
             'U' => $U,
             'P' => $P,
             'Q' => $Q,

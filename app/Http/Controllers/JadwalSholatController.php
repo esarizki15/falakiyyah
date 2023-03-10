@@ -22,6 +22,14 @@ class JadwalSholatController extends Controller
             'zona_waktu' => 7,
             'ihtiyath' => 2,
         ]);
+        // Panongan
+        // $astronomical = collect([
+        //     'lintang' => -6.265565,
+        //     'bujur' => 106.54021,
+        //     'tinggi_tempat' => 36,
+        //     'zona_waktu' => 7,
+        //     'ihtiyath' => 0,
+        // ]);
         // Surabaya
         // $astronomical = collect([
         //     'lintang' => -7.25,
