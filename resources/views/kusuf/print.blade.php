@@ -33,9 +33,11 @@
                     <li>
                         Terjadi Gerhana Matahari pada akhir bulan {{ $data['bulan_hijriah']['nama'] }} tahun {{ $data['tahun_hijriah'] }}H pada hari {{ $data['Hari'] }} {{ $data['Pasaran'] }} yang bertepatan dengan tanggal {{ $data['TGL'] }} {{ \App\Bulan::where('nomor', $data['BLN'])->first()->nama }} {{ $data['THN'] }}
                     </li>
+                    @if(($data['Y'] >= 0.9972 && $data['Y'] <= 1.54332))
                     <li>
-                        {{-- Jenis Gerhana = {{ $data['MG'] >= 1 ? 'Total' : 'Sebagian' }} --}}
+                        Jenis Gerhana = Sebagian
                     </li>
+                    @endif
                     <li>
                         Awal Gerhana = {{ $data['awalGerhana'] }}
                     </li>

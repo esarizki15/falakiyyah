@@ -840,7 +840,7 @@ if (!function_exists('kusuf')) {
         $D = (int)(365.25 * $C);
         $E2 = (int)(($B - $D) / 30.6001);
         $TGL = (int)($B - $D - (int)(30.6001 * $E2));
-        $WD > 24 ? $TGL += 1 : $TGL = $TGL;
+        // $WD > 24 ? $TGL += 1 : $TGL = $TGL;
         $BLN = ($E2 < 13.5) ? ($E2 -1) : $E2;
 
         // Harus di uji
@@ -870,8 +870,7 @@ if (!function_exists('kusuf')) {
         // irsyadul murid 190
         // kalau hasil positif => utara
         // kalau negatif => selata
-        $U = 0.00059 + 0.0046 * cosDegree($M) -0.0182 * cosDegree($Mq) + 0.0004 * cosDegree(2 * $Mq) -0.0005 * cosDegree($M + $Mq);
-
+        $U = 0.0059 + 0.0046 * cosDegree($M) -0.0182 * cosDegree($Mq) + 0.0004 * cosDegree(2 * $Mq) -0.0005 * cosDegree($M + $Mq);
         $P = 1 + $U + 0.5460;
         $Q = 1 + $U;
         $N = 0.5458 + 0.0400 * cosDegree($Mq);
@@ -933,13 +932,13 @@ if (!function_exists('kusuf')) {
             'C6' => formatDMS($C6),
             'CI' => formatDMS($CI),
             'W' => formatDMS($W),
-            'Y' => formatDMS($Y),
-            'U' => formatDMS($U),
-            'P' => formatDMS($P),
-            'Q' => formatDMS($Q),
-            'N' => formatDMS($N),
-            'saatKusuf' => formatDMS($saatKusuf),
-            'saatMukts' => formatDMS($saatMukts),
+            'Y' => $Y,
+            'U' => $U,
+            'P' => $P,
+            'Q' => $Q,
+            'N' => $N,
+            'saatKusuf' => formatJam($saatKusuf, ""),
+            'saatMukts' => formatJam($saatMukts, ""),
             'tengahGerhana' => formatJam($tengahGerhana, "WIB"),
             'awalGerhana' => formatJam($awalGerhana, "WIB"),
             'awalTotal' => formatJam($awalTotal, "WIB"),

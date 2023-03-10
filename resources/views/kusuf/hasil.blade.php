@@ -227,7 +227,7 @@
                 <tr>
                     <th>C</th>
                     <td>0.2070 * sin (M) + C1 + C2 + C3 + C4 + C5 + C6</td>
-                    <td class="col-value">{{ $data['C'] }}</td>
+                    <td class="col-value">{{ $data['CI'] }}</td>
                 </tr>
                 <tr>
                     <th>Y</th>
@@ -236,7 +236,7 @@
                 </tr>
                 <tr>
                     <th>U</th>
-                    <td>0.00059 + 0.0046 * cos M - 0.0182 * cos M' + 0.0004 * cos 2M' - 0.0005 * cos(M + M')</td>
+                    <td>0.0059 + 0.0046 * cos M - 0.0182 * cos M' + 0.0004 * cos 2M' - 0.0005 * cos(M + M')</td>
                     <td class="col-value">{{ $data['U'] }}</td>
                 </tr>
                 <tr>
@@ -257,12 +257,12 @@
                 <tr>
                     <th>T1</th>
                     <td>60 / N * &Sqrt;(P<sup>2</sup> - Y<sup>2</sup>) / 60</td>
-                    <td class="col-value">{{ $data['T1'] }}</td>
+                    <td class="col-value">{{ $data['saatKusuf'] }}</td>
                 </tr>
                 <tr>
                     <th>T2</th>
                     <td>60 / N * &Sqrt;(Q<sup>2</sup> - Y<sup>2</sup>) / 60</td>
-                    <td class="col-value">{{ $data['T2'] }}</td>
+                    <td class="col-value">{{ $data['saatMukts'] }}</td>
                 </tr>
                 <tr>
                     <th>Tengah Gerhana</th>
