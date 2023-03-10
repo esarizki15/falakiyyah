@@ -877,11 +877,11 @@ if (!function_exists('kusuf')) {
 
         $saatKusuf = 60 / $N * sqrt(pow($P, 2) - pow($Y, 2)) / 60;
         $saatMukts = 60 / $N * sqrt(pow($Q, 2) - pow($Y, 2)) / 60;
-        $tengahGerhana = $T0;
-        $awalGerhana = $T0 - $T1;
-        $awalTotal = $T0 - $T2;
-        $akhirTotal = $T0 + $T2;
-        $akhirGerhana = $T0 + $T1;
+        $tengahGerhana = $WD;
+        $awalGerhana = $WD - $saatKusuf;
+        // $awalTotal = $WD - $T2;
+        // $akhirTotal = $WD + $T2;
+        $akhirGerhana = $WD + $saatKusuf;
 
         // need code sds and sdm for kusuf kulli and halqy
 
@@ -941,8 +941,8 @@ if (!function_exists('kusuf')) {
             'saatMukts' => formatJam($saatMukts, ""),
             'tengahGerhana' => formatJam($tengahGerhana, "WIB"),
             'awalGerhana' => formatJam($awalGerhana, "WIB"),
-            'awalTotal' => formatJam($awalTotal, "WIB"),
-            'akhirTotal' => formatJam($akhirTotal, "WIB"),
+            // 'awalTotal' => formatJam($awalTotal, "WIB"),
+            // 'akhirTotal' => formatJam($akhirTotal, "WIB"),
             'akhirGerhana' => formatJam($akhirGerhana, "WIB"),
             'Mag' => $Mag,
             'DURASI' => formatJam($akhirGerhana - $awalGerhana, ""),
