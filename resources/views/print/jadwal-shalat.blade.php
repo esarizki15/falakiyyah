@@ -78,7 +78,7 @@
                                     <tbody>
                                         @foreach ($dataSholat as $index=>$val)
                                             <tr>
-                                                <td>{{ $val["tanggal"] }}</td>
+                                                <td>{{ \Carbon\Carbon::create($val["tanggal"])->format('d M Y') }}</td>
                                                 <td>{{ $val["data"]["Imsak"]["WD"] }}</td>
                                                 <td>{{ $val["data"]["Subuh"]["WD_IHTIYATH"] }}</td>
                                                 <td>{{ $val["data"]["Terbit"]["WD_IHTIYATH"] }}</td>

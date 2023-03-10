@@ -83,6 +83,7 @@ class IjtimaController extends Controller
             $bulan = Bulan::find($request->bulan_hijriah);
             $nextMonth = Bulan::find((int)$request->bulan_hijriah + 1);
             $data = ijtima($request->tahun_hijriah,$bulan->nomor,0,7);
+            $dataNextMonth = ijtima($request->tahun_hijriah,($bulan->nomor + 1),0,7);
             $purnama = ijtima($request->tahun_hijriah,$nextMonth->nomor,0.5,7);
             $purnama['bulan_hijriah'] = $nextMonth;
             $purnama['tahun_hijriah'] = $request->tahun_hijriah;
@@ -90,6 +91,10 @@ class IjtimaController extends Controller
             $data['tahun_hijriah'] = $request->tahun_hijriah;
             $data['markaz'] = $request->markaz;
             $data = collect($data);
+            $dataNextMonth['bulan_hijriah'] = $nextMonth;
+            $dataNextMonth['tahun_hijriah'] = $request->tahun_hijriah;
+            $dataNextMonth['markaz'] = $request->markaz;
+            $dataNextMonth = collect($dataNextMonth);
             // dd($purnama)
             if(!empty($request->lintang) && !empty($request->bujur) && !empty($request->tinggi_tempat) && !empty($request->zona_waktu) && !empty($request->tanggal)){
                 $tanggal = Carbon::create($request->tanggal);
@@ -104,6 +109,7 @@ class IjtimaController extends Controller
                     'markaz' => $request->markaz,
                 ]);
                 $hilal = hilal($astronomical['bujur'], $astronomical['lintang'],null,null,$astronomical['tanggal'], $astronomical['zona_waktu'],$astronomical['tinggi_tempat']);
+                $hilalNextMonth = hilal($astronomical['bujur'], $astronomical['lintang'],null,null,Carbon::create("2023-04-20"), $astronomical['zona_waktu'],$astronomical['tinggi_tempat']);
                 // $dataSholat = [];
                 // if(!empty($request->jumlah_hari)){
                 //     for($i = 0; $i <= $request->jumlah_hari; $i++){
@@ -116,7 +122,7 @@ class IjtimaController extends Controller
                 //     }
                 //     $dataSholat = collect($dataSholat);
                 // }
-                return view('print.hilal-2', compact('data', 'purnama', 'astronomical', 'hilal'));
+                return view('print.hilal-2', compact('data', 'purnama', 'astronomical', 'hilal', 'dataNextMonth', 'hilalNextMonth'));
             }
             // Kalau hanya ijtima' return ini
             return view('ijtima.print', compact('data'));

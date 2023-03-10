@@ -96,7 +96,7 @@
                                                 </tr>
                                             </tbody>
                                         </table>
-                                        {{-- <hr class="my-5" style="border: 1px solid red;">
+                                        <hr class="my-5" style="border: 1px solid red;">
                                         <table class="table table-hover display nowrap text-center table-bordered"
                                             style="width:100%;">
                                             <tbody>
@@ -122,9 +122,73 @@
                                                 </tr>
                                             </tbody>
                                         </table>
-                                        <hr class="my-5" style="border: 1px solid red;"> --}}
+                                        <hr class="my-5" style="border: 1px solid red;">
+                                        <table class="table table-hover display nowrap text-center table-bordered"
+                                            style="width:100%;">
+                                            <tbody>
+                                                <tr>
+                                                    <th style="width: 50%;">Ijtima // Akhir Bulan</th>
+                                                    <td>{{ $dataNextMonth['bulan_hijriah']['nama'] }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th style="width: 50%;">Tahun</th>
+                                                    <td>{{ $dataNextMonth['tahun_hijriah'] . ' H' }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th style="width: 50%;">Tanggal</th>
+                                                    <td>{{ $dataNextMonth['DATE_CARBON']->format('d M Y') }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th style="width: 50%;">Hari</th>
+                                                    <td>{{ $dataNextMonth['Hari'] . ' - ' . $dataNextMonth['Pasaran'] }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th style="width: 50%;">Jam</th>
+                                                    <td>{{ $dataNextMonth["WD"] }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th style="width: 50%;">Matahari Terbenam</th>
+                                                    <td>{{ $hilalNextMonth['Grb']['WD'] }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th style="width: 50%;">Azimut Matahari</th>
+                                                    <td>{{ $hilalNextMonth['Az']['Barat'] }} dari arah Barat</td>
+                                                </tr>
+                                                <tr>
+                                                    <th style="width: 50%;">Hilal Terbenam</th>
+                                                    <td>{{ $hilalNextMonth['Ms'] }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th style="width: 50%;">Azimut Hilal</th>
+                                                    <td>{{ $hilalNextMonth['Azc']['Barat'] }} dari arah Barat</td>
+                                                </tr>
+                                                <tr>
+                                                    <th style="width: 50%;">Tinggi Hakiki</th>
+                                                    <td>{{ $hilalNextMonth['hc'] }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th style="width: 50%;">Tinggi Lihat</th>
+                                                    <td>{{ $hilalNextMonth['hc1'] }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th style="width: 50%;">Lama Hilal di Atas Ufuk</th>
+                                                    <td>{{ $hilalNextMonth['Dc'] }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th style="width: 50%;">Cahaya Hilal</th>
+                                                    <td>{{ $hilalNextMonth['FI'] }}</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
                                     </div>
                                 </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <ul>
+                                    <li>Dihitung menggunakan algoritma yang tertulis pada kitab irsyadul murid cetakan ke 4</li>
+                                </ul>
                             </div>
                         </div>
                     </div>
