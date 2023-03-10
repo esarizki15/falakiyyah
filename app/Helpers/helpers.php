@@ -887,7 +887,7 @@ if (!function_exists('kusuf')) {
         // need code sds and sdm for kusuf kulli and halqy
 
         // this code, for juz'i
-        $Mag = (1.5432 + $U - abs($y)) / (0.5460 + 2 * $U);
+        $Mag = (1.5432 + $U - abs($Y)) / (0.5460 + 2 * $U);
 
         return [
             'HY' => $HY,
@@ -945,7 +945,7 @@ if (!function_exists('kusuf')) {
             'awalTotal' => formatJam($awalTotal, "WIB"),
             'akhirTotal' => formatJam($akhirTotal, "WIB"),
             'akhirGerhana' => formatJam($akhirGerhana, "WIB"),
-            '$Mag' => $Mag,
+            'Mag' => $Mag,
             'DURASI' => formatJam($akhirGerhana - $awalGerhana, ""),
             'DATE_CARBON' => Carbon::create($THN . '-' . $BLN . '-' . $TGL),
             'Hari' => cariHari(\Carbon\Carbon::create($date))['Hari'],

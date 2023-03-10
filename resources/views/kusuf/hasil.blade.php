@@ -88,12 +88,6 @@
                     <td>(JD - (int)JD) * 24</td>
                     <td class="col-value">{{ $data['T0'] }}</td>
                 </tr>
-            </tbody>
-        </table>
-    </div>
-    <div class="col">
-        <table class="table table-hover display nowrap table-bordered table-rumus" style="width:100%;">
-            <tbody>
                 <tr>
                     <th>Tengah Gerhana WIB</th>
                     <td>Tengah Gerhana + Time Zone</td>
@@ -164,6 +158,12 @@
                     <td>PA - int(PA / 5) * 5</td>
                     <td class="col-value">{{ $data['Pasaran'] }}</td>
                 </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="col">
+        <table class="table table-hover display nowrap table-bordered table-rumus" style="width:100%;">
+            <tbody>
                 <tr>
                     <th>S1</th>
                     <td>-0.0048 * cos (M)</td>
@@ -244,14 +244,6 @@
                     <td>1 + U + 0.5460</td>
                     <td class="col-value">{{ $data['P'] }}</td>
                 </tr>
-            </tbody>
-        </table>
-    </div>
-</div>
-<div class="row divIdToPrint py-5">
-    <div class="col">
-        <table class="table table-hover display nowrap table-bordered table-rumus" style="width:100%;">
-            <tbody>
                 <tr>
                     <th>Q</th>
                     <td>1 + U</td>
@@ -288,10 +280,19 @@
                     <td class="col-value">{{ $data['akhirGerhana'] }}</td>
                 </tr>
                 <tr>
-                    <th>MG</th>
+                    <th>Mag</th>
                     <td>(1.5432 + U - abs(Y)) / (0.5460 + 2 * U)</td>
-                    <td class="col-value">{{ $data['MG'] }}</td>
+                    <td class="col-value">{{ $data['Mag'] }}</td>
                 </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<div class="row divIdToPrint py-5">
+    <div class="col">
+        <table class="table table-hover display nowrap table-bordered table-rumus" style="width:100%;">
+            <tbody>
+                
             </tbody>
         </table>
     </div>
