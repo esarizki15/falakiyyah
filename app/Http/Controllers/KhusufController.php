@@ -32,6 +32,7 @@ class KhusufController extends Controller
             $data['markaz'] = $request->markaz;
             $data = collect($data);
             // Kalau hanya ijtima' return ini
+
             return view('khusuf.print', compact('data'));
         }
         

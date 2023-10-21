@@ -372,11 +372,13 @@
                     <td>60 / N * &Sqrt;(P<sup>2</sup> - Y<sup>2</sup>) / 60</td>
                     <td class="col-value">{{ $data['T2'] }}</td>
                 </tr>
+                @if ($data['isTotal'])
                 <tr>
                     <th>T3</th>
                     <td>60 / N * &Sqrt;(R<sup>2</sup> - Y<sup>2</sup>) / 60</td>
-                    <td class="col-value">{{ $data['T3'] }}</td>
+                    <td class="col-value">{{ $data['T3W'] }}</td>
                 </tr>
+                @endif
                 <tr>
                     <th>W1</th>
                     <td>T0 - T1</td>
@@ -387,21 +389,25 @@
                     <td>T0 - T2</td>
                     <td class="col-value">{{ $data['W2'] }} (Awal Gerhana)</td>
                 </tr>
+                @if ($data['isTotal'])
                 <tr>
                     <th>W3</th>
                     <td>T0 - T3</td>
                     <td class="col-value">{{ $data['W3'] }} (Awal Total)</td>
                 </tr>
+                @endif
                 <tr>
                     <th>T0</th>
                     <td>T0</td>
                     <td class="col-value">{{ $data['WD'] }} (Tengah Gerhana)</td>
                 </tr>
+                @if ($data['isTotal'])
                 <tr>
                     <th>W4</th>
                     <td>T0 + T3</td>
                     <td class="col-value">{{ $data['W4'] }} (Akhir Total)</td>
                 </tr>
+                @endif
                 <tr>
                     <th>W5</th>
                     <td>T0 + T2</td>

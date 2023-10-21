@@ -703,15 +703,14 @@ if (!function_exists('khusuf')) {
 
         $T1 = 60 / $N * sqrt(pow($H, 2) - pow($Y, 2)) / 60;
         $T2 = 60 / $N * sqrt(pow($P, 2) - pow($Y, 2)) / 60;
-        $T3 = 60 / $N * sqrt(pow($R, 2) - pow($Y, 2)) / 60;
-
+        $T3W = 60 / $N * sqrt(pow($R, 2) - pow($Y, 2)) / 60;
         $W1 = $WD - $T1;
         $W2 = $WD - $T2;
-        $W3 = $WD - $T3;
-        $W4 = $WD + $T3;
+        $W3 = $WD - $T3W;
+        $W4 = $WD + $T3W;
         $W5 = $WD + $T2;
         $W6 = $WD + $T1;
-
+        
         return [
             'HY' => $HY,
             'K' => $K,
@@ -782,13 +781,14 @@ if (!function_exists('khusuf')) {
             'MG' => ($MG),
             'T1' => formatDMS($T1),
             'T2' => formatDMS($T2),
-            'T3' => formatDMS($T3),
+            'T3W' => formatDMS($T3W),
             'W1' => formatJam($W1, "WIB"),
             'W2' => formatJam($W2, "WIB"),
             'W3' => formatJam($W3, "WIB"),
             'W4' => formatJam($W4, "WIB"),
             'W5' => formatJam($W5, "WIB"),
             'W6' => formatJam($W6, "WIB"),
+            'isTotal' => $MG >=1,
             'DURASI' => formatJam($W5 - $W2, ""),
             'DURASI_TOTAL' => formatJam($W4 - $W3, ""),
             'DATE_CARBON' => Carbon::create($THN . '-' . $BLN . '-' . $TGL),

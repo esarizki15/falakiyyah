@@ -39,24 +39,30 @@
                     <li>
                         Awal Gerhana = {{ $data['W2'] }}
                     </li>
-                    <li>
-                        Awal Gerhana Total = {{ $data['W3'] }}
-                    </li>
+                    @if ($data['isTotal'])
+                        <li>
+                            Awal Gerhana Total = {{ $data['W3'] }}
+                        </li>
+                    @endif
                     <li>
                         Tengah Gerhana = {{ $data['WD'] }}
                     </li>
-                    <li>
-                        Akhir Gerhana Total = {{ $data['W4'] }}
-                    </li>
+                    @if ($data['isTotal'])
+                        <li>
+                            Akhir Gerhana Total = {{ $data['W4'] }}
+                        </li>
+                    @endif
                     <li>
                         Akhir Gerhana = {{ $data['W5'] }}
                     </li>
                     <li>
                         Durasi Gerhana = {{ $data['DURASI'] }}
                     </li>
-                    <li>
-                        Durasi Gerhana Total = {{ $data['DURASI_TOTAL'] }}
-                    </li>
+                    @if ($data['isTotal'])
+                        <li>
+                            Durasi Gerhana Total = {{ $data['DURASI_TOTAL'] }}
+                        </li>
+                    @endif
                     <li>Dihitung menggunakan algoritma yang tertulis pada kitab irsyadul murid cetakan ke 4</li>
                     <li>Berlaku untuk daerah dengan zona waktu GMT +7 (WIB)</li>
                 </ul>
