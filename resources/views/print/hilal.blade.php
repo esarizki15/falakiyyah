@@ -19,7 +19,7 @@
                                 </div> --}}
                                 <div class="col text-center">
                                     <div class="row" style="font-size: 18px; font-weight:bold; font-family: 'Reem Kufi', sans-serif;">
-                                        <div class="col"><h1>{{ strtoupper('معهد دار الحق الإسلامي الإنجلي') }}</h1></div>
+                                        <div class="col"><h1>{{ strtoupper('معهد دار الحق الإسلامي') }}</h1></div>
                                     </div>
                                     <div class="row mt-2" style="font-size: 18px; font-weight:bold; font-family: 'Reem Kufi', sans-serif;">
                                         <div class="col"><h4>{{ strtoupper('pondok pesantren daar el haqqi') }}</h4></div>
@@ -53,7 +53,7 @@
                                                 <td>{{ $astronomical['bujur'] }}</td>
                                                 <td>{{ $astronomical['tinggi_tempat'] }}</td>
                                                 <td>{{ $astronomical['zona_waktu'] }}</td>
-                                                <td>{{ $astronomical['tanggal']->toDateString() }}</td>
+                                                <td>{{ $data['DATE_CARBON']->locale('id')->settings(['formatFunction' => 'translatedFormat'])->format('j F Y') }}</td>
                                             </tr>
                                         </tbody>
                                     </table>
